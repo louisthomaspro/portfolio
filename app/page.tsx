@@ -1,4 +1,8 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Blog } from "@/components/blocks/blog/blog"
+import { Location } from "@/components/blocks/location"
+import { Projects } from "@/components/blocks/projects"
+import { Stack } from "@/components/blocks/stack"
+import { Terminal } from "@/components/blocks/terminal"
 import { SiteHeader } from "@/components/layouts/site-header"
 
 export default function Home() {
@@ -9,45 +13,17 @@ export default function Home() {
         <div className="flex gap-5">
           <div className="flex flex-col gap-5 w-full">
             <div className="flex flex-col gap-5 sm:flex-row">
-              <Card className="aspect-square lg:aspect-auto lg:h-[300px] w-full">
-                <CardContent>...</CardContent>
-              </Card>
-              <Card className="aspect-square w-full block lg:hidden">
-                <CardHeader>
-                  <CardTitle>My stack</CardTitle>
-                </CardHeader>
-                <CardContent>...</CardContent>
-              </Card>
+              <Terminal className="aspect-square lg:aspect-auto lg:h-[300px] w-full" />
+              <Stack className="aspect-square w-full block lg:hidden" />
             </div>
             <div className="flex flex-col gap-5 sm:flex-row">
-              <Card className="sm:flex-1 aspect-square">
-                <CardHeader>
-                  <CardTitle>Blog</CardTitle>
-                </CardHeader>
-                <CardContent>...</CardContent>
-              </Card>
-              <Card className="sm:flex-1 aspect-square">
-                <CardHeader>
-                  <CardTitle>Location</CardTitle>
-                </CardHeader>
-                <CardContent>...</CardContent>
-              </Card>
+              <Blog className="sm:flex-1 aspect-square" />
+              <Location className="sm:flex-1 aspect-square" />
             </div>
           </div>
-          <Card className="min-w-[400px] hidden lg:block">
-            <CardHeader>
-              <CardTitle>My stack</CardTitle>
-            </CardHeader>
-            <CardContent>...</CardContent>
-          </Card>
+          <Stack className="min-w-[400px] hidden lg:block" />
         </div>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>Selected projects</CardTitle>
-          </CardHeader>
-          <CardContent>...</CardContent>
-        </Card>
+        <Projects />
       </div>
     </div>
   )
