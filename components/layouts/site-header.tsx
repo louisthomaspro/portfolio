@@ -7,7 +7,7 @@ import { Icons } from "@/components/icons"
 
 export const SiteHeader = async () => {
   return (
-    <header className={`flex items-center w-full justify-between h-10`}>
+    <header className={`flex items-start md:items-center w-full justify-between flex-col md:flex-row gap-4`}>
       <div className="flex space-x-4">
         <Image src={profile} alt="logo" className="h-14 w-14 rounded-full" />
         <div className="flex flex-col">
