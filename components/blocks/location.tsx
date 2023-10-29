@@ -2,7 +2,7 @@
 
 import "mapbox-gl/dist/mapbox-gl.css"
 
-import { use, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { Fira_Code } from "next/font/google"
 import { Map, Marker } from "react-map-gl"
 
