@@ -10,8 +10,8 @@ const Tag = React.forwardRef<HTMLDivElement, TagProps>(({ className, active, ...
   <div
     ref={ref}
     className={cn(
-      "bg-white/10 rounded-full border border-white/10 justify-center items-center px-3 py-1 inline-flex text-sm cursor-pointer select-none",
-      active && "bg-white/20",
+      "bg-accent/40 border-input rounded-full border justify-center items-center px-2 py-0.5 inline-flex text-sm cursor-pointer select-none",
+      active && "bg-accent",
       className
     )}
     {...props}

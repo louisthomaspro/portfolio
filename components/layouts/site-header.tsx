@@ -4,29 +4,44 @@ import Image from "next/image"
 import Link from "next/link"
 import profile from "@/public/profile.jpg"
 
+import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
 
-export const SiteHeader = () => {
+export const SiteHeader = ({ className }: { className?: string }) => {
   return (
-    <header className={`flex items-start md:items-center w-full justify-between flex-col md:flex-row gap-4`}>
+    <header
+      className={cn(`flex items-start md:items-center w-full justify-between flex-col md:flex-row gap-4`, className)}
+    >
       <div className="flex space-x-4">
-        <Image src={profile} alt="logo" className="h-14 w-14 rounded-full" />
+        <Image src={profile} alt="logo" className="h-12 w-12 rounded-full" />
         <div className="flex flex-col">
-          <div className="text-xl font-semibold">Louis THOMAS</div>
-          <div className="opacity-60">Remote Fullstack Developer - &#123;NextJS / ReactJS&#125;</div>
+          <div className="text-lg font-semibold">Louis THOMAS</div>
+          <div className="opacity-60 text-sm">Remote Fullstack Developer - &#123;NextJS / ReactJS&#125;</div>
         </div>
       </div>
       <div className="flex items-center space-x-6">
-        <div className="flex space-x-3">
-          <Link href={"https://twitter.com/louisthomaspro"} target="_blank">
-            <Icons.twitter className="h-6" />
+        <div className="flex gap-1">
+          <Link
+            href={"https://twitter.com/louisthomaspro"}
+            target="_blank"
+            className="flex items-center p-1 text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <Icons.twitter className="h-[22px]" />
           </Link>
-          <Link href={"https://github.com/louisthomaspro"} target="_blank">
-            <Icons.github className="h-6" />
+          <Link
+            href={"https://github.com/louisthomaspro"}
+            target="_blank"
+            className="flex items-center p-1 text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <Icons.github className="h-[22px] " />
           </Link>
-          <Link href={"https://www.linkedin.com/in/louis-thomas"} target="_blank">
-            <Icons.linkedIn className="h-6" />
+          <Link
+            href={"https://www.linkedin.com/in/louis-thomas"}
+            target="_blank"
+            className="flex items-center p-1 text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <Icons.linkedIn className="h-[22px]" />
           </Link>
         </div>
         <Button variant={"outline"} className="group">

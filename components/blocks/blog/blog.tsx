@@ -27,12 +27,12 @@ export const Blog = ({ className }: { className?: string }) => {
     <Card className={cn(className)}>
       <CardHeader>
         <CardTitle>
-          <Icons.blog className="h-4 mr-2" />
+          <Icons.blog className="h-3.5 mr-2" />
           Blog
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className={cn("flex flex-col px-5 bg-neutral-800 rounded-2xl border border-white/10", className)}>
+        <div className={"flex flex-col divide-y"}>
           {blogs.map((item, index) => (
             <BlogCard key={index} blog={item} />
           ))}

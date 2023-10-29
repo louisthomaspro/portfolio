@@ -7,6 +7,7 @@ import {
   faLayerGroup,
   faLocationDot,
   faNewspaper,
+  faUserCircle,
 } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon, FontAwesomeIconProps } from "@fortawesome/react-fontawesome"
 
@@ -26,5 +27,6 @@ export const Icons = {
   blog: (props: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon {...props} icon={faNewspaper} />,
   location: (props: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon {...props} icon={faLocationDot} />,
   project: (props: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon {...props} icon={faFolder} />,
+  about: (props: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon {...props} icon={faUserCircle} />,
   chevronRight: (props: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon {...props} icon={faChevronRight} />,
 }

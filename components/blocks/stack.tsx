@@ -80,21 +80,21 @@ export const Stack = ({ className }: { className?: string }) => {
     <Card className={cn(className)}>
       <CardHeader>
         <CardTitle>
-          <Icons.stack className="h-4 mr-2" />
+          <Icons.stack className="h-3.5 mr-2" />
           My stack
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="flex flex-wrap gap-2 mb-4">
+        <div className="flex flex-wrap gap-1.5 mb-2">
           {tags.map((item, index) => (
             <Tag key={index} active={item.value === activeTag} onClick={() => handleTagClick(item.value)}>
               {item.label}
             </Tag>
           ))}
         </div>
-        <div className="flex flex-col px-2 bg-neutral-800 rounded-2xl border border-white/10">
+        <div className="flex flex-col divide-y ">
           {filteredStack.map((item, index) => (
-            <div key={index} className="py-2.5 border-b border-white/10 justify-start items-center gap-4 inline-flex">
+            <div key={index} className="py-2.5 justify-start items-center gap-4 inline-flex">
               <Image className="w-8 h-8" src={item.logo} alt={item.title} />
               <div className="text-sm">
                 <div className="font-semibold">NextJS</div>
