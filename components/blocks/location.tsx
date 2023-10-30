@@ -66,9 +66,9 @@ export const Location = ({ className }: { className?: string }) => {
             projection={"globe" as any}
           >
             <Marker latitude={COORDINATES[0]} longitude={COORDINATES[1]}>
-              <span className="relative flex h-4 w-4">
+              <span className="relative flex h-2.5 w-2.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-slate-300 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-4 w-4 bg-slate-400"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-slate-400"></span>
               </span>
             </Marker>
           </Map>
@@ -77,7 +77,7 @@ export const Location = ({ className }: { className?: string }) => {
           <div className="relative">
             <div className="absolute bottom-0 h-full w-full z-20 select-none bg-gradient-to-t from-black/40 to-100%" />
             <div className="flex flex-col text-sm p-3.5">
-              <div className="font-bold">Siargao, Philippines</div>
+              <div className="font-semibold">Siargao, Philippines</div>
               <div>Time: 4:34pm</div>
             </div>
           </div>

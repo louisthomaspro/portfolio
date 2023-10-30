@@ -8,7 +8,7 @@ export const Availability = ({ className }: { className?: string }) => {
     <Card className={cn("flex flex-col", className)}>
       <CardHeader>
         <CardTitle>
-          <span className="flex-none mr-2 rounded-full h-3 w-3 bg-[#cb9349]"></span>
+          <span className="flex-none mr-2 rounded-full h-2.5 w-2.5 bg-[#cb4747]"></span>
           Availability
         </CardTitle>
       </CardHeader>
