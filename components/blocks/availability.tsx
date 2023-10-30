@@ -3,9 +3,9 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Icons } from "@/components/icons"
 
-export const Availability = ({ className }: { className?: string }) => {
+export const Availability = ({ className, ...props }: React.ComponentProps<typeof Card>) => {
   return (
-    <Card className={cn("flex flex-col", className)}>
+    <Card className={cn("flex flex-col", className)} {...props}>
       <CardHeader>
         <CardTitle>
           <span className="flex-none mr-2 rounded-full h-2.5 w-2.5 bg-[#cb4747]"></span>

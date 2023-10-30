@@ -2,9 +2,9 @@ import { cn } from "@/lib/utils"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Icons } from "@/components/icons"
 
-export const About = ({ className }: { className?: string }) => {
+export const About = ({ className, ...props }: React.ComponentProps<typeof Card>) => {
   return (
-    <Card className={cn("flex flex-col", className)}>
+    <Card className={cn("flex flex-col", className)} {...props}>
       <CardHeader>
         <CardTitle>
           <Icons.about className="h-3.5 mr-2" />

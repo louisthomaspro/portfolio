@@ -61,7 +61,7 @@ const tags = [
   },
 ]
 
-export const Stack = ({ className }: { className?: string }) => {
+export const Stack = ({ className, ...props }: React.ComponentProps<typeof Card>) => {
   const [activeTag, setActiveTag] = useState<null | string>(null)
 
   const handleTagClick = (tagValue: string) => {
@@ -77,7 +77,7 @@ export const Stack = ({ className }: { className?: string }) => {
   const filteredStack = activeTag ? stack.filter((item) => item.tags.includes(activeTag)) : stack
 
   return (
-    <Card className={cn(className)}>
+    <Card className={cn(className)} {...props}>
       <CardHeader>
         <CardTitle>
           <Icons.stack className="h-3.5 mr-2" />

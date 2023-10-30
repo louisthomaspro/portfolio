@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { BlogCard, IBlog } from "@/components/blocks/blog/blog-card"
 import { Icons } from "@/components/icons"
 
-export const Blog = ({ className }: { className?: string }) => {
+export const Blog = ({ className, ...props }: React.ComponentProps<typeof Card>) => {
   const blogs: IBlog[] = [
     {
       source: "twitter",
@@ -24,7 +24,7 @@ export const Blog = ({ className }: { className?: string }) => {
   ]
 
   return (
-    <Card className={cn(className)}>
+    <Card className={cn(className)} {...props}>
       <CardHeader>
         <CardTitle>
           <Icons.blog className="h-3.5 mr-2" />

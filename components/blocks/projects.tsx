@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Icons } from "@/components/icons"
 
-export const Projects = ({ className }: { className?: string }) => {
+export const Projects = ({ className, ...props }: React.ComponentProps<typeof Card>) => {
   // const projects: IProject[] = [
   //   {
   //     url: "https://sea-life.vercel.app/",
@@ -28,7 +28,7 @@ export const Projects = ({ className }: { className?: string }) => {
   // ]
 
   return (
-    <Card className={cn(className)}>
+    <Card className={cn(className)} {...props}>
       <CardHeader>
         <CardTitle>
           <Icons.project className="h-3.5 mr-2" />

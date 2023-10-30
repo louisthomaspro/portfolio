@@ -20,7 +20,7 @@ const INITIAL_VIEW_STATE = {
   longitude: COORDINATES[1],
 }
 
-export const Location = ({ className }: { className?: string }) => {
+export const Location = ({ className, ...props }: React.ComponentProps<typeof Card>) => {
   const [latitude, setLatitude] = useState("0")
   const [longitude, setLongitude] = useState("0")
 
@@ -45,8 +45,19 @@ export const Location = ({ className }: { className?: string }) => {
     }
   }, [])
 
+  const [time, setTime] = useState(new Date().toLocaleTimeString("en-US", { timeZone: "Asia/Manila" }))
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setTime(new Date().toLocaleTimeString("en-US", { timeZone: "Asia/Manila" }))
+    }, 1000)
+
+    // Clear the interval when the component unmounts
+    return () => clearInterval(intervalId)
+  }, []) // Empty dependency array ensures the effect runs only once after the initial render
+
   return (
-    <Card className={cn("relative p-0 overflow-hidden", className)}>
+    <Card className={cn("relative p-0 overflow-hidden", className)} {...props}>
       <CardHeader className="p-3.5 absolute z-10">
         <CardTitle>
           <Icons.location className="h-3.5 mr-2" />
@@ -54,11 +65,9 @@ export const Location = ({ className }: { className?: string }) => {
         </CardTitle>
       </CardHeader>
       <CardContent className="absolute w-full h-full">
-        <div
-          style={{ height: "-webkit-fill-available" }}
-          className="flex-1 overflow-hidden relative before:absolute before:inset-0 before:shadow-inner before:bg-gradient-to-t before:from-black before:via-transparent before:to-transparent"
-        >
+        <div className="flex-1 h-full overflow-hidden relative before:absolute before:inset-0 before:shadow-inner before:bg-gradient-to-t before:from-black before:via-transparent before:to-transparent">
           <Map
+            style={{ height: "100%", width: "100%" }}
             initialViewState={INITIAL_VIEW_STATE}
             attributionControl={false}
             mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}
@@ -76,9 +85,9 @@ export const Location = ({ className }: { className?: string }) => {
         <div className="absolute bottom-0 left-0 w-full">
           <div className="relative">
             <div className="absolute bottom-0 h-full w-full z-20 select-none bg-gradient-to-t from-black/40 to-100%" />
-            <div className="flex flex-col text-sm p-3.5">
+            <div className="flex flex-col p-3.5 text-[11px]">
               <div className="font-semibold">Siargao, Philippines</div>
-              <div>Time: 4:34pm</div>
+              <div suppressHydrationWarning>{time} (GMT+8)</div>
             </div>
           </div>
         </div>
