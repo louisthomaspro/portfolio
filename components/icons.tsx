@@ -2,6 +2,7 @@ import { SVGProps } from "react"
 import { faGithub, faLinkedin, faXTwitter } from "@fortawesome/free-brands-svg-icons"
 import {
   faArrowRight,
+  faChevronLeft,
   faChevronRight,
   faFolder,
   faLayerGroup,
@@ -29,4 +30,5 @@ export const Icons = {
   project: (props: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon {...props} icon={faFolder} />,
   about: (props: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon {...props} icon={faUserCircle} />,
   chevronRight: (props: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon {...props} icon={faChevronRight} />,
+  chevronLeft: (props: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon {...props} icon={faChevronLeft} />,
 }

@@ -44,10 +44,12 @@ export const SiteHeader = ({ className }: { className?: string }) => {
             <Icons.linkedIn className="h-[22px]" />
           </Link>
         </div>
-        <Button variant={"outline"} className="group">
-          Résumé
-          <Icons.externalLink className="ml-2 h-3 transition-transform group-hover:translate-y-[-2px] group-hover:translate-x-[2px] group-focus-visible:translate-y-[-2px] group-focus-visible:translate-x-[2px]" />
-        </Button>
+        <Link href="/Resume - Louis THOMAS.pdf" target="_blank">
+          <Button variant={"outline"} className="group">
+            Résumé
+            <Icons.externalLink className="ml-2 h-3 transition-transform group-hover:translate-y-[-2px] group-hover:translate-x-[2px] group-focus-visible:translate-y-[-2px] group-focus-visible:translate-x-[2px]" />
+          </Button>
+        </Link>
       </div>
     </header>
   )

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 
+import { Album } from "@/components/album"
 import { About } from "@/components/blocks/about"
 import { Availability } from "@/components/blocks/availability"
 import { Blog } from "@/components/blocks/blog/blog"
@@ -17,9 +18,10 @@ export default function Home() {
       <div className="grid grid-cols-6 gap-4">
         <Availability className="" transition={{ delay: 0 }} />
         <About className="col-span-2" transition={{ delay: 0.05 }} />
-        <Location className="" transition={{ delay: 0.05 }} />
+        <Location className="aspect-square" transition={{ delay: 0.05 }} />
         <Stack className="col-span-2 row-span-3" transition={{ delay: 0.2 }} />
-        <Blog className="col-span-2 row-span-2" transition={{ delay: 0.1 }} />
+        {/* <Blog className="col-span-2 row-span-2" transition={{ delay: 0.1 }} /> */}
+        <Album className="col-span-2 row-span-2 aspect-[4/3]" transition={{ delay: 0.1 }} />
         <Projects className="col-span-2 row-span-2" transition={{ delay: 0.15 }} />
       </div>
     </div>

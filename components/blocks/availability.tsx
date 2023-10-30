@@ -8,11 +8,11 @@ export const Availability = ({ className, ...props }: React.ComponentProps<typeo
     <Card className={cn("flex flex-col", className)} {...props}>
       <CardHeader>
         <CardTitle>
-          <span className="flex-none mr-2 rounded-full h-2.5 w-2.5 bg-[#cb4747]"></span>
+          <span className="flex-none mr-2 rounded-full h-2.5 w-2.5 bg-[#af3b3b]"></span>
           Availability
         </CardTitle>
       </CardHeader>
-      <CardContent className="grow flex flex-col gap-3 items-end">
+      <CardContent className="grow flex flex-col gap-3 justify-end">
         <p>Temporarily unavailable for new projects due to current workload.</p>
         <Button variant={"outline"} size={"sm"} className="group w-full rounded-full">
           Contact me
