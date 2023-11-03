@@ -13,8 +13,8 @@ export const ProjectCard = ({ project, className }: { project: Project; classNam
         <Image
           src={project.imageUrl}
           alt={project.title}
-          width={200}
-          height={200}
+          width={70}
+          height={70}
           className="object-cover w-full h-full rounded-xl"
         />
       </div>

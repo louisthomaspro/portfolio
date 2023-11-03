@@ -2,7 +2,6 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import profile from "@/public/profile.jpg"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -14,7 +13,9 @@ export const SiteHeader = ({ className }: { className?: string }) => {
       className={cn(`flex items-start md:items-center w-full justify-between flex-col md:flex-row gap-4`, className)}
     >
       <div className="flex space-x-4">
-        <Image src={profile} priority alt="logo" className="h-12 w-12 rounded-full" />
+        <div className="h-12 w-12">
+          <Image src="/profile.jpg" priority width={50} height={50} alt="logo" className="h-full w-full rounded-full" />
+        </div>
         <div className="flex flex-col">
           <div className="text-lg font-semibold">Louis THOMAS</div>
           <div className="opacity-60 text-sm">Remote Fullstack Developer - &#123;NextJS / ReactJS&#125;</div>

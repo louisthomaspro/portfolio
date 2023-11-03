@@ -22,23 +22,35 @@ export const Album = ({ className, ...props }: React.ComponentProps<typeof Card>
     },
   })
 
-  const medias = ["/album/2.jpg", "/album/1.jpg"]
+  const medias = [
+    {
+      description: "Mount Rinjani, Lombok",
+      url: "/album/2.jpg",
+    },
+    {
+      description: "Countryside, Lombok",
+      url: "/album/1.jpg",
+    },
+  ]
 
   return (
     <Card className={cn("relative p-0 overflow-hidden", className)} {...props}>
       <CardContent className="absolute w-full h-full">
         <div className={"grid w-full h-full relative opacity-90 hover:opacity-100 transition-opacity"}>
           <div ref={sliderRef} className="keen-slider">
-            {medias.map((url, i) => (
-              <Image
-                src={url}
-                alt="ads"
-                width={1500}
-                height={1500}
-                key={i}
-                className="keen-slider__slide h-full w-full object-cover absolute transition-opacity duration-150"
-                priority={i === 0}
-              />
+            {medias.map((media, i) => (
+              <div className="relative keen-slider__slide">
+                <div className="absolute top-0 h-16 w-full z-20 select-none bg-gradient-to-b from-black/40 to-100%" />
+                <div className="absolute top-3 right-4 opacity-80 z-30 text-[11px]">{media.description}</div>
+                <Image
+                  src={media.url}
+                  alt={media.description}
+                  width={1000}
+                  height={1000}
+                  key={i}
+                  className="h-full w-full object-cover absolute transition-opacity duration-150"
+                />
+              </div>
             ))}
           </div>
           {loaded && instanceRef.current && (
