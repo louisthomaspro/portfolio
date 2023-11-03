@@ -65,6 +65,7 @@ export const Album = ({ className, ...props }: React.ComponentProps<typeof Card>
                 )}
               >
                 <Icons.chevronLeft className="text-gray-700" />
+                <span className="sr-only">Previous</span>
               </div>
               {/* Chevron right */}
               <div
@@ -76,6 +77,7 @@ export const Album = ({ className, ...props }: React.ComponentProps<typeof Card>
                 )}
               >
                 <Icons.chevronRight className="text-gray-700" />
+                <span className="sr-only">Next</span>
               </div>
               {/* Dots */}
               <div className="absolute bottom-0 w-full flex py-2 justify-center">
@@ -90,7 +92,9 @@ export const Album = ({ className, ...props }: React.ComponentProps<typeof Card>
                         "dot border-none w-2 h-2 bg-white opacity-50 rounded-full mx-1 cursor-pointer select-none",
                         currentSlide === idx && "opacity-100"
                       )}
-                    ></button>
+                    >
+                      <span className="sr-only">Slide {idx + 1}</span>
+                    </button>
                   )
                 })}
               </div>

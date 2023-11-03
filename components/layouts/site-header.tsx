@@ -26,6 +26,7 @@ export const SiteHeader = ({ className }: { className?: string }) => {
           <Link
             href={"https://twitter.com/louisthomaspro"}
             target="_blank"
+            aria-label="Twitter"
             className="flex items-center p-1 text-muted-foreground hover:text-foreground transition-colors"
           >
             <Icons.twitter className="h-[22px]" />
@@ -33,6 +34,7 @@ export const SiteHeader = ({ className }: { className?: string }) => {
           <Link
             href={"https://github.com/louisthomaspro"}
             target="_blank"
+            aria-label="Github"
             className="flex items-center p-1 text-muted-foreground hover:text-foreground transition-colors"
           >
             <Icons.github className="h-[22px] " />
@@ -40,17 +42,18 @@ export const SiteHeader = ({ className }: { className?: string }) => {
           <Link
             href={"https://www.linkedin.com/in/louis-thomas"}
             target="_blank"
+            aria-label="LinkedIn"
             className="flex items-center p-1 text-muted-foreground hover:text-foreground transition-colors"
           >
             <Icons.linkedIn className="h-[22px]" />
           </Link>
         </div>
-        <Link href="/Resume - Louis THOMAS.pdf" target="_blank">
+        <a href="/Resume - Louis THOMAS.pdf" target="_blank">
           <Button variant={"outline"} className="group">
             Résumé
             <Icons.externalLink className="ml-2 h-3 transition-transform group-hover:translate-y-[-2px] group-hover:translate-x-[2px] group-focus-visible:translate-y-[-2px] group-focus-visible:translate-x-[2px]" />
           </Button>
-        </Link>
+        </a>
       </div>
     </header>
   )
