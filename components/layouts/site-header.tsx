@@ -14,7 +14,7 @@ export const SiteHeader = ({ className }: { className?: string }) => {
       className={cn(`flex items-start md:items-center w-full justify-between flex-col md:flex-row gap-4`, className)}
     >
       <div className="flex space-x-4">
-        <Image src={profile} alt="logo" className="h-12 w-12 rounded-full" />
+        <Image src={profile} priority alt="logo" className="h-12 w-12 rounded-full" />
         <div className="flex flex-col">
           <div className="text-lg font-semibold">Louis THOMAS</div>
           <div className="opacity-60 text-sm">Remote Fullstack Developer - &#123;NextJS / ReactJS&#125;</div>

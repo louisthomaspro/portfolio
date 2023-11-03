@@ -22,7 +22,7 @@ export const Album = ({ className, ...props }: React.ComponentProps<typeof Card>
     },
   })
 
-  const medias = ["/2.jpg", "/1.jpg"]
+  const medias = ["/album/2.jpg", "/album/1.jpg"]
 
   return (
     <Card className={cn("relative p-0 overflow-hidden", className)} {...props}>
@@ -33,8 +33,8 @@ export const Album = ({ className, ...props }: React.ComponentProps<typeof Card>
               <Image
                 src={url}
                 alt="ads"
-                width={400}
-                height={400}
+                width={1500}
+                height={1500}
                 key={i}
                 className="keen-slider__slide h-full w-full object-cover absolute transition-opacity duration-150"
                 priority={i === 0}

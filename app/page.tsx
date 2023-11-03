@@ -15,13 +15,13 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center container pt-20 pb-8">
       <SiteHeader className="mb-10" />
-      <div className="grid grid-cols-6 gap-4">
+      <div className="grid grid-cols-6 gap-4 auto-rows-[160px]">
         <Availability className="" transition={{ delay: 0 }} />
         <About className="col-span-2" transition={{ delay: 0.05 }} />
-        <Location className="aspect-square" transition={{ delay: 0.05 }} />
+        <Location className="" transition={{ delay: 0.05 }} />
         <Stack className="col-span-2 row-span-3" transition={{ delay: 0.2 }} />
         {/* <Blog className="col-span-2 row-span-2" transition={{ delay: 0.1 }} /> */}
-        <Album className="col-span-2 row-span-2 aspect-[4/3]" transition={{ delay: 0.1 }} />
+        <Album className="col-span-2 row-span-2" transition={{ delay: 0.1 }} />
         <Projects className="col-span-2 row-span-2" transition={{ delay: 0.15 }} />
       </div>
     </div>

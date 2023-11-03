@@ -2,64 +2,13 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import vercelImg from "@/public/stack/vercel.svg"
 
+import { stack, tags } from "@/config/stack"
 import { cn } from "@/lib/utils"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Icons } from "@/components/icons"
-import { Tag } from "@/components/tag"
-
-const stack = [
-  {
-    title: "Next.js",
-    description: "Framework built on top of React",
-    url: "https://nextjs.org/",
-    logo: vercelImg,
-    tags: ["favorite", "framework", "hosting"],
-  },
-  {
-    title: "Next.js",
-    description: "Framework built on top of React",
-    url: "https://nextjs.org/",
-    logo: vercelImg,
-    tags: ["framework", "hosting"],
-  },
-  {
-    title: "Next.js",
-    description: "Framework built on top of React",
-    url: "https://nextjs.org/",
-    logo: vercelImg,
-    tags: ["design"],
-  },
-]
-
-// Add prismic
-const tags = [
-  {
-    label: "♥",
-    value: "favorite",
-  },
-  {
-    label: "Web framework",
-    value: "framework",
-  },
-  {
-    label: "Design",
-    value: "design",
-  },
-  {
-    label: "Hosting",
-    value: "hosting",
-  },
-  {
-    label: "Productivity",
-    value: "productivity",
-  },
-  {
-    label: "Database",
-    value: "database",
-  },
-]
+import { Pill } from "@/components/pill"
+import { StackCard } from "@/components/stack-card"
 
 export const Stack = ({ className, ...props }: React.ComponentProps<typeof Card>) => {
   const [activeTag, setActiveTag] = useState<null | string>(null)
@@ -77,30 +26,29 @@ export const Stack = ({ className, ...props }: React.ComponentProps<typeof Card>
   const filteredStack = activeTag ? stack.filter((item) => item.tags.includes(activeTag)) : stack
 
   return (
-    <Card className={cn(className)} {...props}>
-      <CardHeader>
+    <Card className={cn("p-0 flex flex-col", className)} {...props}>
+      <CardHeader className="p-3.5">
         <CardTitle>
           <Icons.stack className="h-3.5 mr-2" />
           My stack
         </CardTitle>
       </CardHeader>
-      <CardContent>
+      <CardContent className="flex flex-col divide-y overflow-auto px-3.5">
         <div className="flex flex-wrap gap-1.5 mb-2">
           {tags.map((item, index) => (
-            <Tag key={index} active={item.value === activeTag} onClick={() => handleTagClick(item.value)}>
+            <Pill
+              variant={"active"}
+              key={index}
+              active={item.value === activeTag}
+              onClick={() => handleTagClick(item.value)}
+            >
               {item.label}
-            </Tag>
+            </Pill>
           ))}
         </div>
-        <div className="flex flex-col divide-y ">
+        <div className="flex flex-col divide-y">
           {filteredStack.map((item, index) => (
-            <div key={index} className="py-2.5 justify-start items-center gap-4 inline-flex">
-              <Image className="w-8 h-8" src={item.logo} alt={item.title} />
-              <div className="text-sm">
-                <div className="font-semibold">NextJS</div>
-                <div>Framework built on top of React</div>
-              </div>
-            </div>
+            <StackCard key={index} stackItem={item} />
           ))}
         </div>
       </CardContent>

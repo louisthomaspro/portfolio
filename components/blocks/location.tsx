@@ -85,9 +85,11 @@ export const Location = ({ className, ...props }: React.ComponentProps<typeof Ca
         <div className="absolute bottom-0 left-0 w-full">
           <div className="relative">
             <div className="absolute bottom-0 h-full w-full z-20 select-none bg-gradient-to-t from-black/40 to-100%" />
-            <div className="flex flex-col p-3.5 text-[11px]">
+            <div className="flex flex-col p-3.5 text-[11px] relative z-30 opacity-90">
               <div className="font-semibold">Siargao, Philippines</div>
-              <div suppressHydrationWarning>{time} (GMT+8)</div>
+              <div className={cn(firaCode.className)} suppressHydrationWarning>
+                {time} (GMT+8)
+              </div>
             </div>
           </div>
         </div>
