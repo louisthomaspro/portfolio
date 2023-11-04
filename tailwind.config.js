@@ -5,9 +5,20 @@ module.exports = {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: {
+        DEFAULT: "1rem",
+        sm: "2rem",
+        lg: "2rem",
+        xl: "2rem",
+        "2xl": "4rem",
+      },
       screens: {
-        "2xl": "1200px",
+        DEFAULT: "100%",
+        sm: "640px",
+        md: "768px",
+        lg: "1024px",
+        xl: "1280px",
+        "2xl": "1440px",
       },
     },
     fontSize: {
