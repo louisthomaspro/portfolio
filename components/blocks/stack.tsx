@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import Image from "next/image"
 
 import { stack, tags } from "@/config/stack"
 import { cn } from "@/lib/utils"
@@ -12,6 +11,11 @@ import { StackCard } from "@/components/stack-card"
 
 export const Stack = ({ className, ...props }: React.ComponentProps<typeof Card>) => {
   const [activeTag, setActiveTag] = useState<null | string>(null)
+  const [visibleStacks, setVisibleStacks] = useState(4)
+
+  const handleLoadMore = () => {
+    setVisibleStacks((prevVisibleStacks) => prevVisibleStacks + 4)
+  }
 
   const handleTagClick = (tagValue: string) => {
     if (activeTag === tagValue) {
@@ -33,8 +37,8 @@ export const Stack = ({ className, ...props }: React.ComponentProps<typeof Card>
           My stack
         </CardTitle>
       </CardHeader>
-      <CardContent className="flex flex-col divide-y overflow-auto px-3.5">
-        <div className="flex flex-wrap gap-1.5 mb-2">
+      <CardContent className="flex flex-col overflow-auto">
+        <div className="flex flex-wrap gap-1.5 mb-2 px-3.5">
           {tags.map((item, index) => (
             <Pill
               variant={"active"}
@@ -46,10 +50,18 @@ export const Stack = ({ className, ...props }: React.ComponentProps<typeof Card>
             </Pill>
           ))}
         </div>
-        <div className="flex flex-col divide-y">
+        <div className="flex flex-col divide-y overflow-auto px-3.5">
+          {/* {filteredStack.slice(0, visibleStacks).map((item, index) => ( */}
           {filteredStack.map((item, index) => (
-            <StackCard key={index} stackItem={item} />
+            <div key={index} className="-mx-3.5">
+              <StackCard stackItem={item} />
+            </div>
           ))}
+          {/* {filteredStack.length > visibleStacks && (
+            <button onClick={handleLoadMore} className="bg-blue-500 text-white px-4 py-2 mt-4">
+              Load More
+            </button>
+          )} */}
         </div>
       </CardContent>
     </Card>

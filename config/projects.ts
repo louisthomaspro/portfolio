@@ -12,14 +12,14 @@ export const projects: Project[] = [
     url: "https://vercel.com/integrations/lighthouse-guard",
     title: "Lighthouse Guard",
     imageUrl: "/projects/lighthouse-guard.jpg",
-    description: "Streamline your performance monitoring process.",
+    description: "Streamline your performance monitoring process. Check which commits dropped your Lighthouse score.",
     tags: ["Next.js", "Vercel Integration"],
   },
   {
     url: "https://sea-life.vercel.app/",
     title: "MonPanier",
     imageUrl: "/projects/mon-panier.png",
-    description: "Créer un site e-commerce à votre image.",
+    description: "Connect with your local shops and order online. Eat local, eat fresh.",
     tags: ["Prototype", "Figma"],
   },
 ]

@@ -28,12 +28,18 @@ export default function Home() {
           className="col-span-1 sm:col-span-2 md:col-span-1 min-h-[200px] sm:min-h-0"
           transition={{ delay: 0.05 }}
         />
-        <Stack className="col-span-1 sm:col-span-2 row-span-2 md:row-span-3" transition={{ delay: 0.2 }} />
+        <Stack
+          className="col-span-1 sm:col-span-2 md:col-span-4 lg:col-span-2 row-span-2 md:row-span-3"
+          transition={{ delay: 0.2 }}
+        />
         <Album
-          className="col-span-1 sm:col-span-2 row-span-2 aspect-[16/9] md:aspect-auto"
+          className="col-span-1 sm:col-span-2 md:col-span-4 lg:col-span-2 row-span-2 aspect-[16/9] md:aspect-auto"
           transition={{ delay: 0.1 }}
         />
-        <Projects className="col-span-1 sm:col-span-2 row-span-2" transition={{ delay: 0.15 }} />
+        <Projects
+          className="col-span-1 sm:col-span-2 md:col-span-4 lg:col-span-2 row-span-2"
+          transition={{ delay: 0.15 }}
+        />
       </div>
     </div>
   )

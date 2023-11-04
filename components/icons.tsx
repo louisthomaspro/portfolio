@@ -5,6 +5,7 @@ import {
   faChevronLeft,
   faChevronRight,
   faFolder,
+  faHeart,
   faLayerGroup,
   faLocationDot,
   faNewspaper,
@@ -31,4 +32,5 @@ export const Icons = {
   about: (props: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon {...props} icon={faUserCircle} />,
   chevronRight: (props: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon {...props} icon={faChevronRight} />,
   chevronLeft: (props: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon {...props} icon={faChevronLeft} />,
+  favorite: (props: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon {...props} icon={faHeart} />,
 }

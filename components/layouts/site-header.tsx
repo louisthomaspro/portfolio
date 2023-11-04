@@ -18,7 +18,7 @@ export const SiteHeader = ({ className }: { className?: string }) => {
         </div>
         <div className="flex flex-col">
           <div className="text-lg font-semibold">Louis THOMAS</div>
-          <div className="opacity-60 text-sm">Remote Fullstack Developer - &#123;NextJS / ReactJS&#125;</div>
+          <div className="opacity-60 text-sm">Remote Fullstack Developer - Expert Next.js</div>
         </div>
       </div>
       <div className="flex items-center space-x-6">

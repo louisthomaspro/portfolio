@@ -15,8 +15,8 @@ export const Projects = ({ className, ...props }: React.ComponentProps<typeof Ca
       </CardHeader>
       <CardContent className="flex flex-col divide-y overflow-auto px-3.5">
         {projects.map((item, index) => (
-          <div key={index}>
-            <ProjectCard project={item} className="-mx-3.5 px-3.5" />
+          <div key={index} className="-mx-3.5">
+            <ProjectCard project={item} />
           </div>
         ))}
       </CardContent>
