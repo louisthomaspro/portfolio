@@ -1,12 +1,52 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Image from "next/image"
 import { useKeenSlider } from "keen-slider/react"
 
 import "keen-slider/keen-slider.min.css"
 
+import { motion, Variants } from "framer-motion"
+
 import { cn } from "@/lib/utils"
 import { Card, CardContent } from "@/components/ui/card"
 import { Icons } from "@/components/icons"
+
+const delay = 0
+const animationDuration = 0.03
+const letterAnimationDuration = 0.15
+
+// Animate each letter
+const container: Variants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: (i: number = 1) => ({
+    opacity: 1,
+    transition: { staggerChildren: animationDuration, delayChildren: i * delay },
+  }),
+}
+
+const child: Variants = {
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: letterAnimationDuration,
+      // type: "spring",
+      damping: 12,
+      stiffness: 200,
+    },
+  },
+  hidden: {
+    opacity: 0,
+    y: 4,
+    transition: {
+      duration: letterAnimationDuration,
+      // type: "spring",
+      damping: 12,
+      stiffness: 200,
+    },
+  },
+}
 
 export const Album = ({ className, ...props }: React.ComponentProps<typeof Card>) => {
   const [currentSlide, setCurrentSlide] = useState(0) // keenSlider
@@ -39,9 +79,25 @@ export const Album = ({ className, ...props }: React.ComponentProps<typeof Card>
         <div className={"grid w-full h-full relative opacity-90 hover:opacity-100 transition-opacity"}>
           <div ref={sliderRef} className="keen-slider">
             {medias.map((media, i) => (
+              <motion.h1
+                key={i}
+                style={{ display: "flex", overflow: "hidden" }}
+                variants={container}
+                initial="hidden"
+                animate={currentSlide === i ? "visible" : "hidden"}
+                className="absolute top-3 right-4 opacity-80 z-30 text-[11px]"
+                {...props}
+              >
+                {Array.from(media.description).map((letter, index) => (
+                  <motion.span key={index} variants={child}>
+                    {letter === " " ? "\u00A0" : letter}
+                  </motion.span>
+                ))}
+              </motion.h1>
+            ))}
+            {medias.map((media, i) => (
               <div className="relative keen-slider__slide">
                 <div className="absolute top-0 h-16 w-full z-20 select-none bg-gradient-to-b from-black/40 to-100%" />
-                <div className="absolute top-3 right-4 opacity-80 z-30 text-[11px]">{media.description}</div>
                 <Image
                   src={media.url}
                   alt={media.description}
