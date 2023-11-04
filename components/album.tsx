@@ -88,16 +88,16 @@ export const Album = ({ className, ...props }: React.ComponentProps<typeof Card>
                 className="absolute top-3 right-4 opacity-80 z-30 text-[11px]"
                 {...props}
               >
-                {Array.from(media.description).map((letter, index) => (
-                  <motion.span key={index} variants={child}>
+                {Array.from(media.description).map((letter, i) => (
+                  <motion.span key={i} variants={child}>
                     {letter === " " ? "\u00A0" : letter}
                   </motion.span>
                 ))}
               </motion.h1>
             ))}
             {medias.map((media, i) => (
-              <div className="relative keen-slider__slide">
-                <div className="absolute top-0 h-16 w-full z-20 select-none bg-gradient-to-b from-black/40 to-100%" />
+              <div className="relative keen-slider__slide" key={i}>
+                <div className="absolute top-0 h-14 w-full z-20 select-none bg-gradient-to-b from-black/30 to-100%" />
                 <Image
                   src={media.url}
                   alt={media.description}
