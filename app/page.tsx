@@ -1,10 +1,9 @@
 "use client"
 
 import { cn } from "@/lib/utils"
-import { Album } from "@/components/album"
 import { About } from "@/components/blocks/about"
+import { Album } from "@/components/blocks/album"
 import { Availability } from "@/components/blocks/availability"
-import { Blog } from "@/components/blocks/blog/blog"
 import { Location } from "@/components/blocks/location"
 import { Projects } from "@/components/blocks/projects"
 import { Stack } from "@/components/blocks/stack"
@@ -33,7 +32,7 @@ export default function Home() {
           transition={{ delay: 0.2 }}
         />
         <Album
-          className="col-span-1 sm:col-span-2 md:col-span-4 lg:col-span-2 row-span-2 aspect-[16/9] md:aspect-auto"
+          className="col-span-1 sm:col-span-2 md:col-span-4 lg:col-span-2 row-span-2 aspect-[16/9] lg:aspect-auto"
           transition={{ delay: 0.1 }}
         />
         <Projects

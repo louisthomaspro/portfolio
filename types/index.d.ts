@@ -1,7 +1,9 @@
+import { StaticImageData } from "next/image"
+
 export type Project = {
   url: string
   title: string
-  imageUrl: string
+  imageSrc: StaticImageData
   description: string
   tags: string[]
 }
@@ -10,6 +12,11 @@ export type StackItem = {
   title: string
   description: string
   url: string
-  logo: string
+  imageSrc: StaticImageData
   tags: string[]
+}
+
+export type AlbumItem = {
+  description: string
+  imageSrc: StaticImageData
 }

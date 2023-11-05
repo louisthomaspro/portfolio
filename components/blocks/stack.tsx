@@ -3,18 +3,24 @@
 import { useState } from "react"
 
 import { stack, tags } from "@/config/stack"
+import useWindowSize from "@/lib/hooks/use-windows-size"
 import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Icons } from "@/components/icons"
 import { Pill } from "@/components/pill"
 import { StackCard } from "@/components/stack-card"
 
+const PAGINATION_SIZE = 6
+const PAGINATION_BREAKPOINT = 1024
+
 export const Stack = ({ className, ...props }: React.ComponentProps<typeof Card>) => {
   const [activeTag, setActiveTag] = useState<null | string>(null)
-  const [visibleStacks, setVisibleStacks] = useState(4)
+  const [visibleStacks, setVisibleStacks] = useState(PAGINATION_SIZE)
+  const { width } = useWindowSize()
 
   const handleLoadMore = () => {
-    setVisibleStacks((prevVisibleStacks) => prevVisibleStacks + 4)
+    setVisibleStacks((prevVisibleStacks) => prevVisibleStacks + PAGINATION_SIZE)
   }
 
   const handleTagClick = (tagValue: string) => {
@@ -50,19 +56,31 @@ export const Stack = ({ className, ...props }: React.ComponentProps<typeof Card>
             </Pill>
           ))}
         </div>
-        <div className="flex flex-col divide-y overflow-auto px-3.5">
-          {/* {filteredStack.slice(0, visibleStacks).map((item, index) => ( */}
-          {filteredStack.map((item, index) => (
-            <div key={index} className="-mx-3.5">
-              <StackCard stackItem={item} />
+        {!!width && (
+          <>
+            <div className="flex flex-col divide-y overflow-auto px-3.5">
+              {filteredStack
+                .slice(0, width >= PAGINATION_BREAKPOINT ? filteredStack.length : visibleStacks)
+                .map((item, index) => (
+                  <div key={index} className="-mx-3.5">
+                    <StackCard stackItem={item} />
+                  </div>
+                ))}
             </div>
-          ))}
-          {/* {filteredStack.length > visibleStacks && (
-            <button onClick={handleLoadMore} className="bg-blue-500 text-white px-4 py-2 mt-4">
-              Load More
-            </button>
-          )} */}
-        </div>
+            {visibleStacks < filteredStack.length && width < PAGINATION_BREAKPOINT && (
+              <div className="flex justify-center my-4">
+                <Button
+                  onClick={handleLoadMore}
+                  size={"sm"}
+                  variant={"secondary"}
+                  className="rounded-full max-w-xs w-full"
+                >
+                  View More
+                </Button>
+              </div>
+            )}
+          </>
+        )}
       </CardContent>
     </Card>
   )

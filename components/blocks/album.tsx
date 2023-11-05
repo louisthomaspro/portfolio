@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useRef, useState } from "react"
 import Image from "next/image"
 import { useKeenSlider } from "keen-slider/react"
 
@@ -6,6 +6,7 @@ import "keen-slider/keen-slider.min.css"
 
 import { motion, Variants } from "framer-motion"
 
+import { album } from "@/config/album"
 import { cn } from "@/lib/utils"
 import { Card, CardContent } from "@/components/ui/card"
 import { Icons } from "@/components/icons"
@@ -55,30 +56,26 @@ export const Album = ({ className, ...props }: React.ComponentProps<typeof Card>
     initial: 0,
     loop: true,
     slideChanged(slider: any) {
-      setCurrentSlide(slider.track.details.rel)
+      const slideNumber = slider.track.details.rel
+      setCurrentSlide(slideNumber)
+      if (slideNumber === 0) {
+        videoRef.current?.play()
+      }
     },
     created() {
       setLoaded(true)
     },
   })
 
-  const medias = [
-    {
-      description: "Mount Rinjani, Lombok",
-      url: "/album/2.jpg",
-    },
-    {
-      description: "Countryside, Lombok",
-      url: "/album/1.jpg",
-    },
-  ]
+  // video ref
+  const videoRef = useRef<HTMLVideoElement>(null)
 
   return (
     <Card className={cn("relative p-0 overflow-hidden", className)} {...props}>
       <CardContent className="absolute w-full h-full">
         <div className={"grid w-full h-full relative opacity-90 hover:opacity-100 transition-opacity"}>
           <div ref={sliderRef} className="keen-slider">
-            {medias.map((media, i) => (
+            {album.map((media, i) => (
               <motion.h1
                 key={i}
                 style={{ display: "flex", overflow: "hidden" }}
@@ -95,16 +92,17 @@ export const Album = ({ className, ...props }: React.ComponentProps<typeof Card>
                 ))}
               </motion.h1>
             ))}
-            {medias.map((media, i) => (
+            {album.map((media, i) => (
               <div className="relative keen-slider__slide" key={i}>
                 <div className="absolute top-0 h-14 w-full z-20 select-none bg-gradient-to-b from-black/30 to-100%" />
                 <Image
-                  src={media.url}
+                  src={media.imageSrc!}
                   alt={media.description}
                   width={1000}
                   height={1000}
                   key={i}
                   className="h-full w-full object-cover absolute transition-opacity duration-150"
+                  placeholder="blur"
                 />
               </div>
             ))}
