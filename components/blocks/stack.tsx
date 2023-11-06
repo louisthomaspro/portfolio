@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { AnimatePresence, motion, usePresence } from "framer-motion"
 
 import { stack, tags } from "@/config/stack"
 import useWindowSize from "@/lib/hooks/use-windows-size"
@@ -18,6 +19,9 @@ export const Stack = ({ className, ...props }: React.ComponentProps<typeof Card>
   const [activeTag, setActiveTag] = useState<null | string>(null)
   const [visibleStacks, setVisibleStacks] = useState(PAGINATION_SIZE)
   const { width } = useWindowSize()
+  const [isPresent, safeToRemove] = usePresence()
+
+  const transition = { type: "spring", stiffness: 500, damping: 60, mass: 1 }
 
   const handleLoadMore = () => {
     setVisibleStacks((prevVisibleStacks) => prevVisibleStacks + PAGINATION_SIZE)
@@ -43,7 +47,7 @@ export const Stack = ({ className, ...props }: React.ComponentProps<typeof Card>
           My stack
         </CardTitle>
       </CardHeader>
-      <CardContent className="flex flex-col overflow-auto">
+      <CardContent className="flex flex-col overflow-auto h-full">
         <div className="flex flex-wrap gap-1.5 mb-2 px-3.5">
           {tags.map((item, index) => (
             <Pill
@@ -51,6 +55,7 @@ export const Stack = ({ className, ...props }: React.ComponentProps<typeof Card>
               key={index}
               active={item.value === activeTag}
               onClick={() => handleTagClick(item.value)}
+              className={cn(index === 0 && "data-[state=active]:bg-[#b33e50]")}
             >
               {item.label}
             </Pill>
@@ -58,14 +63,29 @@ export const Stack = ({ className, ...props }: React.ComponentProps<typeof Card>
         </div>
         {!!width && (
           <>
-            <div className="flex flex-col divide-y overflow-auto px-3.5">
-              {filteredStack
-                .slice(0, width >= PAGINATION_BREAKPOINT ? filteredStack.length : visibleStacks)
-                .map((item, index) => (
-                  <div key={index} className="-mx-3.5">
-                    <StackCard stackItem={item} />
-                  </div>
-                ))}
+            <div className="flex flex-col divide-y overflow-y-auto overflow-x-hidden z-10 px-3.5 h-full">
+              <AnimatePresence>
+                {filteredStack
+                  .slice(0, width >= PAGINATION_BREAKPOINT ? filteredStack.length : visibleStacks)
+                  .map((item) => (
+                    <motion.div
+                      key={item.id}
+                      className="-mx-3.5"
+                      layout={true}
+                      initial={"out"}
+                      style={{ position: isPresent ? "static" : "absolute" }}
+                      animate={isPresent ? "in" : "out"}
+                      variants={{
+                        in: { opacity: 1 },
+                        out: { opacity: 0, zIndex: -1 },
+                      }}
+                      onAnimationComplete={() => !isPresent && safeToRemove()}
+                      transition={transition}
+                    >
+                      <StackCard stackItem={item} />
+                    </motion.div>
+                  ))}
+              </AnimatePresence>
             </div>
             {visibleStacks < filteredStack.length && width < PAGINATION_BREAKPOINT && (
               <div className="flex justify-center my-4">

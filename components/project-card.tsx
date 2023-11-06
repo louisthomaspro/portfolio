@@ -8,10 +8,11 @@ import { Pill } from "@/components/pill"
 
 export const ProjectCard = ({ project, className }: { project: Project; className?: string }) => {
   return (
-    <Link
+    <div className={cn("flex px-3.5 py-2 gap-3 hover:bg-accent transition-colors", className)}>
+      {/* <Link
       className={cn("flex px-3.5 py-2 gap-3 hover:bg-accent transition-colors cursor-pointer", className)}
       href={"#"}
-    >
+    > */}
       <div className="w-12 h-12 flex-none">
         <Image
           src={project.imageSrc}
@@ -31,9 +32,10 @@ export const ProjectCard = ({ project, className }: { project: Project; classNam
           ))}
         </div>
       </div>
-      <div className="flex items-center">
+      {/* <div className="flex items-center">
         <Icons.chevronRight className="h-3.5 mr-2" />
-      </div>
-    </Link>
+      </div> */}
+      {/* </Link> */}
+    </div>
   )
 }

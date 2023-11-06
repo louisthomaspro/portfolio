@@ -9,6 +9,7 @@ export type Project = {
 }
 
 export type StackItem = {
+  id: string
   title: string
   description: string
   url: string
