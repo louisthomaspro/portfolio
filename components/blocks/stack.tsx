@@ -30,11 +30,9 @@ export const Stack = ({ className, ...props }: React.ComponentProps<typeof Card>
   const handleTagClick = (tagValue: string) => {
     if (activeTag === tagValue) {
       // If the same tag is clicked again, deactivate it
-      setVisibleStacks(PAGINATION_SIZE)
       setActiveTag(null)
     } else {
       // Otherwise, set the clicked tag as active
-      setVisibleStacks(stack.length)
       setActiveTag(tagValue)
     }
   }
@@ -77,7 +75,7 @@ export const Stack = ({ className, ...props }: React.ComponentProps<typeof Card>
                   .map((item) => (
                     <motion.div
                       key={item.id}
-                      className={cn("-mx-3.5", width < PAGINATION_BREAKPOINT && "overflow-hidden")}
+                      className={cn("-mx-3.5 overflow-hidden flex-none")}
                       layout={true}
                       initial={"out"}
                       style={{ position: isPresent ? "static" : "absolute" }}
