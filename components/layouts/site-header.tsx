@@ -14,7 +14,14 @@ export const SiteHeader = ({ className }: { className?: string }) => {
     >
       <div className="flex space-x-4 flex-none">
         <div className="h-12 w-12 flex-none">
-          <Image src="/profile.jpg" priority width={50} height={50} alt="logo" className="h-full w-full rounded-full" />
+          <Image
+            src="/profile.jpg"
+            priority
+            width={400}
+            height={400}
+            alt="logo"
+            className="h-full w-full rounded-full"
+          />
         </div>
         <div className="flex flex-col">
           <div className="text-lg font-semibold">Louis THOMAS</div>
