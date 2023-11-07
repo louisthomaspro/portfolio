@@ -19,7 +19,7 @@ export const projects: Project[] = [
     tags: ["Next.js", "Vercel Integration"],
   },
   {
-    url: "https://sea-life.vercel.app/",
+    url: "https://www.figma.com/proto/1o5wSNJooIAmzh9BqtYrec/Design-system?type=design&node-id=1265-4084&t=RbZgc3FYgeAHHXAG-0&scaling=scale-down&page-id=420%3A283&starting-point-node-id=1265%3A4084&show-proto-sidebar=1",
     title: "MonPanier",
     imageSrc: MonPanier,
     description: "Connect with your local shops and order online. Eat local, eat fresh.",

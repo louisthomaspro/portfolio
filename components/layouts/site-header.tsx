@@ -12,7 +12,7 @@ export const SiteHeader = ({ className }: { className?: string }) => {
     <header
       className={cn(`flex items-start md:items-center w-full justify-between flex-col md:flex-row gap-4`, className)}
     >
-      <div className="flex space-x-4">
+      <div className="flex space-x-4 flex-none">
         <div className="h-12 w-12 flex-none">
           <Image src="/profile.jpg" priority width={50} height={50} alt="logo" className="h-full w-full rounded-full" />
         </div>
