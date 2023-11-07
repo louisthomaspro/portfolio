@@ -63,22 +63,24 @@ export const Stack = ({ className, ...props }: React.ComponentProps<typeof Card>
         </div>
         {!!width && (
           <>
-            <div className="flex flex-col divide-y overflow-y-auto overflow-x-hidden z-10 px-3.5 h-full">
+            <div
+              className={cn(
+                "flex flex-col divide-y overflow-y-auto overflow-x-hidden z-10 px-3.5 h-full",
+                width < PAGINATION_BREAKPOINT && "overflow-y-hidden"
+              )}
+            >
               <AnimatePresence>
                 {filteredStack
                   .slice(0, width >= PAGINATION_BREAKPOINT ? filteredStack.length : visibleStacks)
                   .map((item) => (
                     <motion.div
                       key={item.id}
-                      className="-mx-3.5"
+                      className={cn("-mx-3.5", width < PAGINATION_BREAKPOINT && "overflow-hidden")}
                       layout={true}
                       initial={"out"}
                       style={{ position: isPresent ? "static" : "absolute" }}
-                      animate={isPresent ? "in" : "out"}
-                      variants={{
-                        in: { opacity: 1 },
-                        out: { opacity: 0, zIndex: -1 },
-                      }}
+                      animate={{ height: "auto" }}
+                      exit={{ height: 0, borderWidth: 0 }}
                       onAnimationComplete={() => !isPresent && safeToRemove()}
                       transition={transition}
                     >

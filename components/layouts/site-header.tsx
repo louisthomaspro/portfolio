@@ -21,7 +21,7 @@ export const SiteHeader = ({ className }: { className?: string }) => {
           <div className="opacity-60 text-sm">Remote Fullstack Developer - Expert Next.js</div>
         </div>
       </div>
-      <div className="flex items-center space-x-6">
+      <div className="flex items-center space-x-6 w-full justify-between md:justify-end">
         <div className="flex gap-1">
           <Link
             href={"https://twitter.com/louisthomaspro"}
