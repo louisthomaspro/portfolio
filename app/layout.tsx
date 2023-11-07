@@ -9,7 +9,7 @@ import { TailwindIndicator } from "@/components/tailwind-indicator"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Freelance Full Stack Developer | Next.js Expert",
+  title: "Louis Thomas | Freelance Next.js",
   description:
     "I am a dedicated freelance full stack developer specializing in Next.js. My expertise lies in creating efficient, responsive, and visually appealing applications. Let's collaborate and build something awesome.",
 }
