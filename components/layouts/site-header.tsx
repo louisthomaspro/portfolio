@@ -1,7 +1,6 @@
-"use client"
-
 import Image from "next/image"
 import Link from "next/link"
+import Profile from "@/public/profile.jpg"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -15,12 +14,13 @@ export const SiteHeader = ({ className }: { className?: string }) => {
       <div className="flex space-x-4 flex-none">
         <div className="h-12 w-12 flex-none">
           <Image
-            src="/profile.jpg"
+            src={Profile}
             priority
             width={400}
             height={400}
             alt="logo"
             className="h-full w-full rounded-full"
+            placeholder="blur"
           />
         </div>
         <div className="flex flex-col">

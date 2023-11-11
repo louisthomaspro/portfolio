@@ -74,7 +74,21 @@ export const Album = ({ className, ...props }: React.ComponentProps<typeof Card>
     <Card className={cn("relative p-0 overflow-hidden", className)} {...props}>
       <CardContent className="absolute w-full h-full">
         <div className={"grid w-full h-full relative opacity-90 hover:opacity-100 transition-opacity"}>
-          <div ref={sliderRef} className="keen-slider">
+          <div ref={sliderRef} className={cn("keen-slider")}>
+            {album.map((media, i) => (
+              <div className="relative keen-slider__slide" key={i}>
+                <div className="absolute top-0 h-14 w-full z-20 select-none bg-gradient-to-b from-black/30 to-100%" />
+                <Image
+                  src={media.imageSrc!}
+                  alt={media.description}
+                  width={1000}
+                  height={1000}
+                  key={i}
+                  className="h-full w-full object-cover absolute transition-opacity duration-150"
+                  placeholder="blur"
+                />
+              </div>
+            ))}
             {album.map((media, i) => (
               <motion.h1
                 key={i}
@@ -92,20 +106,18 @@ export const Album = ({ className, ...props }: React.ComponentProps<typeof Card>
                 ))}
               </motion.h1>
             ))}
-            {album.map((media, i) => (
-              <div className="relative keen-slider__slide" key={i}>
-                <div className="absolute top-0 h-14 w-full z-20 select-none bg-gradient-to-b from-black/30 to-100%" />
-                <Image
-                  src={media.imageSrc!}
-                  alt={media.description}
-                  width={1000}
-                  height={1000}
-                  key={i}
-                  className="h-full w-full object-cover absolute transition-opacity duration-150"
-                  placeholder="blur"
-                />
-              </div>
-            ))}
+            {/* Placeholder while slides are loading */}
+            <div className={cn("absolute w-full h-full", loaded && "hidden")}>
+              <div className="absolute top-0 h-14 w-full z-20 select-none bg-gradient-to-b from-black/30 to-100%" />
+              <Image
+                src={album[0].imageSrc!}
+                alt={album[0].description}
+                width={1000}
+                height={1000}
+                className="h-full w-full object-cover absolute transition-opacity duration-150"
+                placeholder="blur"
+              />
+            </div>
           </div>
           {loaded && instanceRef.current && (
             <>
