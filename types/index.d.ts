@@ -1,7 +1,13 @@
 import { StaticImageData } from "next/image"
 
 export type Project = {
-  url: string
+  urls: {
+    github?: string
+    playStore?: string
+    figma?: string
+    website?: string
+    plugin?: string
+  }
   title: string
   imageSrc: StaticImageData
   description: string

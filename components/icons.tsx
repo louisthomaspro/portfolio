@@ -1,14 +1,15 @@
-import { SVGProps } from "react"
-import { faGithub, faLinkedin, faXTwitter } from "@fortawesome/free-brands-svg-icons"
+import { faFigma, faGithub, faGooglePlay, faLinkedin, faXTwitter } from "@fortawesome/free-brands-svg-icons"
 import {
   faArrowRight,
   faChevronLeft,
   faChevronRight,
   faFolder,
+  faGlobe,
   faHeart,
   faLayerGroup,
   faLocationDot,
   faNewspaper,
+  faPuzzlePiece,
   faUserCircle,
 } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon, FontAwesomeIconProps } from "@fortawesome/react-fontawesome"
@@ -22,6 +23,10 @@ export const Icons = {
   twitter: (props: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon {...props} icon={faXTwitter} />,
   github: (props: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon {...props} icon={faGithub} />,
   linkedIn: (props: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon {...props} icon={faLinkedin} />,
+  website: (props: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon {...props} icon={faGlobe} />,
+  figma: (props: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon {...props} icon={faFigma} />,
+  playStore: (props: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon {...props} icon={faGooglePlay} />,
+  plugin: (props: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon {...props} icon={faPuzzlePiece} />,
   externalLink: (props: Partial<FontAwesomeIconProps>) => (
     <FontAwesomeIcon {...props} className={cn(props.className, "-rotate-45")} icon={faArrowRight} />
   ),
