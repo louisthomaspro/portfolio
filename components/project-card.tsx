@@ -14,11 +14,11 @@ export const ProjectCard = ({ project, className }: { project: Project; classNam
 
   return (
     <div
-      className={cn("relative px-3.5 py-4 hover:bg-accent transition-colors cursor-pointer", className)}
+      className={cn("relative px-3.5 py-4 hover:bg-accent transition-colors", className)}
       onClick={() => setOpen(!open)}
       onMouseLeave={() => setOpen(false)}
     >
-      <div className={cn("flex gap-3 transition-all", open && "opacity-20 blur-sm")}>
+      <div className={cn("cursor-pointer flex gap-3 transition-all", open && "opacity-20 blur-sm")}>
         <div className="w-12 h-12 flex-none">
           <Image
             src={project.imageSrc}
