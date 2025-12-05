@@ -26,7 +26,6 @@ export const ProjectCard = ({ project, className }: { project: Project; classNam
             width={70}
             height={70}
             className="object-cover w-full h-full rounded-xl"
-            placeholder="blur"
           />
         </div>
         <div className="flex flex-col min-w-0">

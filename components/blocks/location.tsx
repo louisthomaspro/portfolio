@@ -13,7 +13,7 @@ import { Icons } from "@/components/icons"
 
 const firaCode = Fira_Code({ subsets: ["latin"] })
 
-const COORDINATES = [9.7905, 126.1563]
+const COORDINATES = [43.116669, 5.93333]
 
 const PAGINATION_BREAKPOINT = 1024
 
@@ -49,11 +49,11 @@ export const Location = ({ className, ...props }: React.ComponentProps<typeof Ca
     }
   }, [])
 
-  const [time, setTime] = useState(new Date().toLocaleTimeString("en-US", { timeZone: "Asia/Manila" }))
+  const [time, setTime] = useState(new Date().toLocaleTimeString("en-US", { timeZone: "Europe/Paris" }))
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      setTime(new Date().toLocaleTimeString("en-US", { timeZone: "Asia/Manila" }))
+      setTime(new Date().toLocaleTimeString("en-US", { timeZone: "Europe/Paris" }))
     }, 1000)
 
     // Clear the interval when the component unmounts
@@ -91,9 +91,9 @@ export const Location = ({ className, ...props }: React.ComponentProps<typeof Ca
           <div className="relative">
             <div className="absolute bottom-0 h-full w-full z-20 select-none bg-gradient-to-t from-black/40 to-100%" />
             <div className="flex flex-col p-3.5 text-[11px] relative z-30 opacity-90">
-              <div className="font-semibold">Siargao, Philippines</div>
+              <div className="font-semibold">Toulon, France</div>
               <div className={cn(firaCode.className)} suppressHydrationWarning>
-                {time} (GMT+8)
+                {time} (GMT+1)
               </div>
             </div>
           </div>

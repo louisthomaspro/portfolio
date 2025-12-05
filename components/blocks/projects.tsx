@@ -10,7 +10,7 @@ export const Projects = ({ className, ...props }: React.ComponentProps<typeof Ca
       <CardHeader className="p-3.5">
         <CardTitle>
           <Icons.project className="h-3.5 mr-2" />
-          Selected projects
+          Selected side projects
         </CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col divide-y overflow-auto px-3.5">

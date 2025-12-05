@@ -12,7 +12,7 @@ export const About = ({ className, ...props }: React.ComponentProps<typeof Card>
         </CardTitle>
       </CardHeader>
       <CardContent className="grow flex items-end">
-        I am a dedicated freelance full stack developer specializing in Next.js. My expertise lies in creating
+        I am a dedicated freelance full stack developer specializing in TypeScript. My expertise lies in creating
         efficient, responsive, and visually appealing applications. Let's collaborate and build something awesome.
       </CardContent>
     </Card>

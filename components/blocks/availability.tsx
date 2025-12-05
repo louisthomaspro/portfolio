@@ -10,12 +10,12 @@ export const Availability = ({ className, ...props }: React.ComponentProps<typeo
     <Card className={cn("flex flex-col", className)} {...props}>
       <CardHeader>
         <CardTitle>
-          <span className="flex-none mr-2 rounded-full h-2.5 w-2.5 bg-[#af3b3b]"></span>
+          <span className="flex-none mr-2 rounded-full h-2.5 w-2.5 bg-[#3baf4f]"></span>
           Availability
         </CardTitle>
       </CardHeader>
       <CardContent className="grow flex flex-col gap-3 justify-end">
-        <p>Temporarily unavailable for new projects due to current workload.</p>
+        <p>Available for new projects. Currently working on side projects.</p>
         <Link
           href={"https://www.linkedin.com/in/louis-thomas"}
           target="_blank"

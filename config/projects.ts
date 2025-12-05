@@ -1,3 +1,4 @@
+import Blime from "@/public/projects/blime.jpg"
 import LighthouseGuard from "@/public/projects/lighthouse-guard.jpg"
 import MonPanier from "@/public/projects/mon-panier.png"
 import SeaLife from "@/public/projects/sea-life.png"
@@ -6,8 +7,16 @@ import { Project } from "@/types"
 export const projects: Project[] = [
   {
     urls: {
+      website: "https://blime.ai/",
+    },
+    title: "Blime",
+    imageSrc: Blime,
+    description: "Blime is a platform for creating and sharing your own music.",
+    tags: ["Next.js", "Turborepo", "Elasticsearch"],
+  },
+  {
+    urls: {
       github: "https://github.com/louisthomaspro/sea-life",
-      playStore: "https://play.google.com/store/apps/details?id=app.vercel.sea_life.twa",
       website: "https://sea-life.vercel.app/",
     },
     title: "Sea Life",
