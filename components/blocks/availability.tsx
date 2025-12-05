@@ -1,11 +1,14 @@
 import Link from "next/link"
+import { MotionProps } from "framer-motion"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Icons } from "@/components/icons"
 
-export const Availability = ({ className, ...props }: React.ComponentProps<typeof Card>) => {
+type CardProps = React.ComponentPropsWithoutRef<"div"> & MotionProps
+
+export const Availability = ({ className, ...props }: CardProps) => {
   return (
     <Card className={cn("flex flex-col", className)} {...props}>
       <CardHeader>

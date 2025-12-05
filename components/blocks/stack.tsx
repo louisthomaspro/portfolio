@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { AnimatePresence, motion, usePresence } from "framer-motion"
+import { AnimatePresence, motion, MotionProps, usePresence } from "framer-motion"
 
 import { stack, tags } from "@/config/stack"
 import useWindowSize from "@/lib/hooks/use-windows-size"
@@ -15,13 +15,15 @@ import { StackCard } from "@/components/stack-card"
 const PAGINATION_SIZE = 6
 const PAGINATION_BREAKPOINT = 1024
 
-export const Stack = ({ className, ...props }: React.ComponentProps<typeof Card>) => {
+type CardProps = React.ComponentPropsWithoutRef<"div"> & MotionProps
+
+export const Stack = ({ className, ...props }: CardProps) => {
   const [activeTag, setActiveTag] = useState<null | string>(null)
   const [visibleStacks, setVisibleStacks] = useState(PAGINATION_SIZE)
   const { width } = useWindowSize()
   const [isPresent, safeToRemove] = usePresence()
 
-  const transition = { type: "spring", stiffness: 500, damping: 60, mass: 1 }
+  const transition = { type: "spring" as const, stiffness: 500, damping: 60, mass: 1 }
 
   const handleLoadMore = () => {
     setVisibleStacks((prevVisibleStacks) => prevVisibleStacks + PAGINATION_SIZE)

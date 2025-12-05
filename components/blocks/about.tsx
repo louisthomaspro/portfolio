@@ -1,8 +1,12 @@
+import { MotionProps } from "framer-motion"
+
 import { cn } from "@/lib/utils"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Icons } from "@/components/icons"
 
-export const About = ({ className, ...props }: React.ComponentProps<typeof Card>) => {
+type CardProps = React.ComponentPropsWithoutRef<"div"> & MotionProps
+
+export const About = ({ className, ...props }: CardProps) => {
   return (
     <Card className={cn("flex flex-col", className)} {...props}>
       <CardHeader>

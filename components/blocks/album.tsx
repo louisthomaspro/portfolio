@@ -4,7 +4,7 @@ import { useKeenSlider } from "keen-slider/react"
 
 import "keen-slider/keen-slider.min.css"
 
-import { motion, Variants } from "framer-motion"
+import { motion, MotionProps, Variants } from "framer-motion"
 
 import { album } from "@/config/album"
 import { cn } from "@/lib/utils"
@@ -49,7 +49,9 @@ const child: Variants = {
   },
 }
 
-export const Album = ({ className, ...props }: React.ComponentProps<typeof Card>) => {
+type CardProps = React.ComponentPropsWithoutRef<"div"> & MotionProps
+
+export const Album = ({ className, ...props }: CardProps) => {
   const [currentSlide, setCurrentSlide] = useState(0) // keenSlider
   const [loaded, setLoaded] = useState(false)
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
@@ -97,7 +99,6 @@ export const Album = ({ className, ...props }: React.ComponentProps<typeof Card>
                 initial="hidden"
                 animate={currentSlide === i ? "visible" : "hidden"}
                 className="absolute top-3 right-4 opacity-80 z-30 text-[11px]"
-                {...props}
               >
                 {Array.from(media.description).map((letter, i) => (
                   <motion.span key={i} variants={child}>

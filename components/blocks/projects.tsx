@@ -1,10 +1,14 @@
+import { MotionProps } from "framer-motion"
+
 import { projects } from "@/config/projects"
 import { cn } from "@/lib/utils"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Icons } from "@/components/icons"
 import { ProjectCard } from "@/components/project-card"
 
-export const Projects = ({ className, ...props }: React.ComponentProps<typeof Card>) => {
+type CardProps = React.ComponentPropsWithoutRef<"div"> & MotionProps
+
+export const Projects = ({ className, ...props }: CardProps) => {
   return (
     <Card className={cn("p-0 flex flex-col", className)} {...props}>
       <CardHeader className="p-3.5">

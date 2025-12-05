@@ -1,9 +1,11 @@
 import * as React from "react"
-import { HTMLMotionProps, motion } from "framer-motion"
+import { motion, MotionProps } from "framer-motion"
 
 import { cn } from "@/lib/utils"
 
-const Card = React.forwardRef<HTMLDivElement, HTMLMotionProps<"div">>(({ className, transition, ...props }, ref) => {
+type CardProps = React.ComponentPropsWithoutRef<"div"> & MotionProps
+
+const Card = React.forwardRef<HTMLDivElement, CardProps>(({ className, transition, ...props }, ref) => {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.9 }}

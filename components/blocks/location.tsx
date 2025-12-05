@@ -4,7 +4,8 @@ import "mapbox-gl/dist/mapbox-gl.css"
 
 import { useEffect, useState } from "react"
 import { Fira_Code } from "next/font/google"
-import { Map, Marker } from "react-map-gl"
+import { MotionProps } from "framer-motion"
+import { Map, Marker } from "react-map-gl/mapbox"
 
 import useWindowSize from "@/lib/hooks/use-windows-size"
 import { cn } from "@/lib/utils"
@@ -23,7 +24,9 @@ const INITIAL_VIEW_STATE = {
   longitude: COORDINATES[1],
 }
 
-export const Location = ({ className, ...props }: React.ComponentProps<typeof Card>) => {
+type CardProps = React.ComponentPropsWithoutRef<"div"> & MotionProps
+
+export const Location = ({ className, ...props }: CardProps) => {
   const [latitude, setLatitude] = useState("0")
   const [longitude, setLongitude] = useState("0")
   const { width } = useWindowSize()
