@@ -13,8 +13,8 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(({ className, transitio
       transition={{ type: "spring", stiffness: 70, ...transition }}
       ref={ref}
       className={cn(
-        "will-change-transform rounded-lg border text-card-foreground shadow-sm p-3.5 bg-gradient-to-tr from-[#21202236] to-[#212022d0]",
-        "hover:bg-[#212022]/50 hover:border-[#2d2d2d] hover:shadow-sm transition-colors",
+        "will-change-transform rounded-lg border text-card-foreground shadow-xs p-3.5 bg-linear-to-tr from-[#21202236] to-[#212022d0]",
+        "hover:bg-[#212022]/50 hover:border-[#2d2d2d] hover:shadow-xs transition-colors",
         // "bg-card",
         className
       )}

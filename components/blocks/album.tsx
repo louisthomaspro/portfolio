@@ -79,7 +79,7 @@ export const Album = ({ className, ...props }: CardProps) => {
           <div ref={sliderRef} className={cn("keen-slider")}>
             {album.map((media, i) => (
               <div className="relative keen-slider__slide" key={i}>
-                <div className="absolute top-0 h-14 w-full z-20 select-none bg-gradient-to-b from-black/30 to-100%" />
+                <div className="absolute top-0 h-14 w-full z-20 select-none bg-linear-to-b from-black/30 to-100%" />
                 <Image
                   src={media.imageSrc!}
                   alt={media.description}
@@ -109,7 +109,7 @@ export const Album = ({ className, ...props }: CardProps) => {
             ))}
             {/* Placeholder while slides are loading */}
             <div className={cn("absolute w-full h-full", loaded && "hidden")}>
-              <div className="absolute top-0 h-14 w-full z-20 select-none bg-gradient-to-b from-black/30 to-100%" />
+              <div className="absolute top-0 h-14 w-full z-20 select-none bg-linear-to-b from-black/30 to-100%" />
               <Image
                 src={album[0].imageSrc!}
                 alt={album[0].description}
@@ -120,13 +120,13 @@ export const Album = ({ className, ...props }: CardProps) => {
               />
             </div>
           </div>
-          {loaded && instanceRef.current && (
+          {loaded && (
             <>
               {/* Chevron left */}
               <div
                 onClick={(e: any) => e.stopPropagation() || instanceRef.current?.prev()}
                 className={cn(
-                  "w-8 h-8 p-2 rounded-full bg-white font-black left-[5px] inset-y-0 my-auto absolute cursor-pointer shadow-sm",
+                  "w-8 h-8 p-2 rounded-full bg-white font-black left-[5px] inset-y-0 my-auto absolute cursor-pointer shadow-xs",
                   "opacity-80 hover:scale-100 scale-90 active:scale-[99%] transition-all",
                   "flex items-center justify-center"
                 )}
@@ -138,7 +138,7 @@ export const Album = ({ className, ...props }: CardProps) => {
               <div
                 onClick={(e: any) => e.stopPropagation() || instanceRef.current?.next()}
                 className={cn(
-                  "w-8 h-8 rounded-full bg-white font-black right-[5px] inset-y-0 my-auto absolute cursor-pointer shadow-sm",
+                  "w-8 h-8 rounded-full bg-white font-black right-[5px] inset-y-0 my-auto absolute cursor-pointer shadow-xs",
                   "opacity-80 hover:scale-100 scale-90 active:scale-[99%] transition-all",
                   "flex items-center justify-center"
                 )}
@@ -148,7 +148,7 @@ export const Album = ({ className, ...props }: CardProps) => {
               </div>
               {/* Dots */}
               <div className="absolute bottom-0 w-full flex py-2 justify-center">
-                {[...Array(instanceRef.current?.track?.details?.slides?.length).keys()].map((idx) => {
+                {album.map((_, idx) => {
                   return (
                     <button
                       key={idx}

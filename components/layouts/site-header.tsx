@@ -25,7 +25,7 @@ export const SiteHeader = ({ className }: { className?: string }) => {
         </div>
         <div className="flex flex-col">
           <div className="text-lg font-semibold">Louis THOMAS</div>
-          <div className="opacity-60 text-sm">Remote Fullstack Developer - Expert Next.js</div>
+          <div className="opacity-60 text-sm">Senior Full-Stack · Technical Lead</div>
         </div>
       </div>
       <div className="flex items-center space-x-6 w-full justify-between md:justify-end">
@@ -37,14 +37,6 @@ export const SiteHeader = ({ className }: { className?: string }) => {
             className="flex items-center p-1 text-muted-foreground hover:text-foreground transition-colors"
           >
             <Icons.twitter className="h-[22px]" />
-          </Link>
-          <Link
-            href={"https://github.com/louisthomaspro"}
-            target="_blank"
-            aria-label="Github"
-            className="flex items-center p-1 text-muted-foreground hover:text-foreground transition-colors"
-          >
-            <Icons.github className="h-[22px] " />
           </Link>
           <Link
             href={"https://www.linkedin.com/in/louis-thomas"}

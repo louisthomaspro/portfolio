@@ -1,15 +1,12 @@
-import Aws from "@/public/stack/aws.jpg"
+import Cursor from "@/public/stack/cursor.svg"
 import Elasticsearch from "@/public/stack/elasticsearch.svg"
 import Figma from "@/public/stack/figma.png"
-import Framer from "@/public/stack/framer.png"
 import GoogleWorkspace from "@/public/stack/google-workspace.png"
 import Grafana from "@/public/stack/grafana.png"
-import Hetzner from "@/public/stack/hetzner.png"
+import GrokBot from "@/public/stack/grok-bot.png"
 import Linear from "@/public/stack/linear.png"
-import N8n from "@/public/stack/n8n.svg"
 import Nextjs from "@/public/stack/nextjs.png"
 import Notion from "@/public/stack/notion.png"
-import Payload from "@/public/stack/payload.svg"
 import Polar from "@/public/stack/polar.svg"
 import React from "@/public/stack/react.png"
 import Shadcn from "@/public/stack/shadcn.png"
@@ -17,6 +14,7 @@ import Slack from "@/public/stack/slack.png"
 import Stripe from "@/public/stack/stripe.png"
 import Supabase from "@/public/stack/supabase.png"
 import Tailwindcss from "@/public/stack/tailwindcss.png"
+import TanstackStart from "@/public/stack/tanstack-start.svg"
 import Turborepo from "@/public/stack/turborepo.svg"
 import Vercel from "@/public/stack/vercel.png"
 import { StackItem } from "@/types"
@@ -49,10 +47,6 @@ export const tags = [
     value: "database",
   },
   {
-    label: "CMS",
-    value: "cms",
-  },
-  {
     label: "Analytics",
     value: "analytics",
   },
@@ -64,6 +58,22 @@ export const tags = [
 
 export const stack: StackItem[] = [
   {
+    id: "cursor",
+    title: "Cursor",
+    description: "AI code editor",
+    url: "https://cursor.com/",
+    imageSrc: Cursor,
+    tags: ["favorite", "productivity"],
+  },
+  {
+    id: "grok-bot",
+    title: "Grok Bot",
+    description: "AI agents for your workflows",
+    url: "https://play.google.com/store/apps/details?id=ai.x.grok.bot",
+    imageSrc: GrokBot,
+    tags: ["favorite", "productivity"],
+  },
+  {
     id: "vercel",
     title: "Vercel",
     description: "Hosting and deployment platform",
@@ -72,12 +82,20 @@ export const stack: StackItem[] = [
     tags: ["favorite", "framework", "hosting"],
   },
   {
+    id: "tanstack-start",
+    title: "TanStack Start",
+    description: "Full-stack React framework",
+    url: "https://tanstack.com/start",
+    imageSrc: TanstackStart,
+    tags: ["favorite", "framework"],
+  },
+  {
     id: "nextjs",
     title: "Next.js",
     description: "Framework built on top of React",
     url: "https://nextjs.org/",
     imageSrc: Nextjs,
-    tags: ["favorite", "framework"],
+    tags: ["framework"],
   },
   {
     id: "figma",
@@ -120,14 +138,6 @@ export const stack: StackItem[] = [
     tags: ["productivity"],
   },
   {
-    id: "framer",
-    title: "Framer",
-    description: "Visual web design platform",
-    url: "https://framer.com/",
-    imageSrc: Framer,
-    tags: ["design"],
-  },
-  {
     id: "supabase",
     title: "Supabase",
     description: "Open source Firebase alternative",
@@ -142,14 +152,6 @@ export const stack: StackItem[] = [
     url: "https://slack.com/",
     imageSrc: Slack,
     tags: ["productivity"],
-  },
-  {
-    id: "aws",
-    title: "AWS",
-    description: "Cloud computing platform",
-    url: "https://aws.amazon.com/",
-    imageSrc: Aws,
-    tags: ["hosting"],
   },
   {
     id: "tailwindcss",
@@ -174,14 +176,6 @@ export const stack: StackItem[] = [
     url: "https://grafana.com/",
     imageSrc: Grafana,
     tags: ["analytics"],
-  },
-  {
-    id: "payload",
-    title: "Payload",
-    description: "Headless CMS and application framework",
-    url: "https://payloadcms.com/",
-    imageSrc: Payload,
-    tags: ["cms"],
   },
   {
     id: "elasticsearch",
@@ -214,21 +208,5 @@ export const stack: StackItem[] = [
     url: "https://polar.sh/",
     imageSrc: Polar,
     tags: ["favorite", "payments"],
-  },
-  {
-    id: "n8n",
-    title: "n8n",
-    description: "Workflow automation platform",
-    url: "https://n8n.io/",
-    imageSrc: N8n,
-    tags: ["favorite", "automation"],
-  },
-  {
-    id: "hetzner",
-    title: "Hetzner",
-    description: "Cloud computing platform",
-    url: "https://hetzner.com/",
-    imageSrc: Hetzner,
-    tags: ["hosting"],
   },
 ]

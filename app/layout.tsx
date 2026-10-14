@@ -31,8 +31,8 @@ export const metadata: Metadata = {
 }
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className={cn(inter.className, "dark")} suppressHydrationWarning>
+    <html lang="en" className="dark">
+      <body className={cn(inter.className)} suppressHydrationWarning>
         {children}
         <Analytics />
         <TailwindIndicator />

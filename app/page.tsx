@@ -16,7 +16,7 @@ export default function Home() {
         <SiteHeader className="mb-10" />
         <div
           className={cn(
-            "grid grid-cols-1 gap-4 auto-rows-[auto]",
+            "grid grid-cols-1 gap-4 auto-rows-auto",
             "sm:grid-cols-2",
             "md:grid-cols-4",
             "lg:grid-cols-6 lg:grid-rows-[190px_300px]"
@@ -33,7 +33,7 @@ export default function Home() {
             transition={{ delay: 0.2 }}
           />
           <Album
-            className="col-span-1 sm:col-span-2 md:col-span-4 lg:col-span-2 aspect-[16/9] lg:aspect-auto"
+            className="col-span-1 sm:col-span-2 md:col-span-4 lg:col-span-2 aspect-video lg:aspect-auto"
             transition={{ delay: 0.1 }}
           />
           <Projects className="col-span-1 sm:col-span-2 md:col-span-4 lg:col-span-2" transition={{ delay: 0.15 }} />

@@ -1,4 +1,4 @@
-import { faFigma, faGithub, faGooglePlay, faLinkedin, faXTwitter } from "@fortawesome/free-brands-svg-icons"
+import { faFigma, faGooglePlay, faLinkedin, faXTwitter } from "@fortawesome/free-brands-svg-icons"
 import {
   faArrowRight,
   faChevronLeft,
@@ -21,7 +21,6 @@ import { cn } from "@/lib/utils"
 
 export const Icons = {
   twitter: (props: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon {...props} icon={faXTwitter} />,
-  github: (props: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon {...props} icon={faGithub} />,
   linkedIn: (props: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon {...props} icon={faLinkedin} />,
   website: (props: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon {...props} icon={faGlobe} />,
   figma: (props: Partial<FontAwesomeIconProps>) => <FontAwesomeIcon {...props} icon={faFigma} />,

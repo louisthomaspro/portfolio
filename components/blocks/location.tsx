@@ -72,7 +72,7 @@ export const Location = ({ className, ...props }: CardProps) => {
         </CardTitle>
       </CardHeader>
       <CardContent className="absolute w-full h-full">
-        <div className="flex-1 h-full overflow-hidden relative before:absolute before:inset-0 before:shadow-inner before:bg-gradient-to-t before:from-black before:via-transparent before:to-transparent">
+        <div className="flex-1 h-full overflow-hidden relative before:absolute before:inset-0 before:shadow-inner before:bg-linear-to-t before:from-black before:via-transparent before:to-transparent">
           <Map
             style={{ height: "100%", width: "100%" }}
             initialViewState={INITIAL_VIEW_STATE}
@@ -92,7 +92,7 @@ export const Location = ({ className, ...props }: CardProps) => {
         </div>
         <div className="absolute bottom-0 left-0 w-full">
           <div className="relative">
-            <div className="absolute bottom-0 h-full w-full z-20 select-none bg-gradient-to-t from-black/40 to-100%" />
+            <div className="absolute bottom-0 h-full w-full z-20 select-none bg-linear-to-t from-black/40 to-100%" />
             <div className="flex flex-col p-3.5 text-[11px] relative z-30 opacity-90">
               <div className="font-semibold">Toulon, France</div>
               <div className={cn(firaCode.className)} suppressHydrationWarning>
