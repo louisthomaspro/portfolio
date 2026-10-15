@@ -19,14 +19,6 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://louisthomas.pro",
     siteName: "Louis Thomas | Freelance Next.js",
-    images: [
-      {
-        url: "/og.png",
-        width: 1200,
-        height: 630,
-        alt: "Louis Thomas",
-      },
-    ],
   },
 }
 export default function RootLayout({ children }: { children: React.ReactNode }) {
