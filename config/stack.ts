@@ -1,7 +1,6 @@
 import Cursor from "@/public/stack/cursor.svg"
 import Elasticsearch from "@/public/stack/elasticsearch.svg"
 import Figma from "@/public/stack/figma.png"
-import GrokBot from "@/public/stack/grok-bot.png"
 import Linear from "@/public/stack/linear.png"
 import Nextjs from "@/public/stack/nextjs.png"
 import ReactLogo from "@/public/stack/react.png"
@@ -16,7 +15,15 @@ import { BrandIcon, StackItem } from "@/types"
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core"
 import { faAws, faOpenai } from "@fortawesome/free-brands-svg-icons"
 import { faBolt } from "@fortawesome/free-solid-svg-icons"
-import { siAnthropic, siClickhouse, siModelcontextprotocol, siNodedotjs, siPostgresql, siPosthog } from "simple-icons"
+import {
+  siAnthropic,
+  siClickhouse,
+  siModelcontextprotocol,
+  siNodedotjs,
+  siPostgresql,
+  siPosthog,
+  siTypescript,
+} from "simple-icons"
 
 const fromFontAwesome = ({ icon: [width, height, , , path] }: IconDefinition, hex: string): BrandIcon => ({
   path: Array.isArray(path) ? path.join(" ") : path,
@@ -36,6 +43,14 @@ export const tags = [
 ]
 
 export const stack: StackItem[] = [
+  {
+    id: "typescript",
+    title: "TypeScript",
+    description: "Sur-ensemble typé de JavaScript",
+    url: "https://www.typescriptlang.org/",
+    icon: brand(siTypescript),
+    tags: ["front"],
+  },
   {
     id: "nextjs",
     title: "Next.js",
@@ -147,14 +162,6 @@ export const stack: StackItem[] = [
     url: "https://modelcontextprotocol.io/",
     icon: brand({ ...siModelcontextprotocol, hex: "FFFFFF" }),
     tags: ["ia"],
-  },
-  {
-    id: "grok-bot",
-    title: "Grok Bot",
-    description: "Agents IA pour automatiser ses workflows",
-    url: "https://play.google.com/store/apps/details?id=ai.x.grok.bot",
-    icon: GrokBot,
-    tags: ["ia", "tools"],
   },
   {
     id: "trigger",

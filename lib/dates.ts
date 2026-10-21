@@ -16,10 +16,10 @@ export const formatPeriod = (start: YearMonth, end?: YearMonth) =>
   `${formatMonth(start)} – ${end ? formatMonth(end) : "aujourd’hui"}`
 
 export const formatYears = (start: YearMonth, end?: YearMonth) => {
-  const from = parse(start).year
-  if (!end) return `Depuis ${from}`
+  const from = parse(start)
+  if (!end) return from.month ? `Depuis ${formatMonth(start)}` : `Depuis ${from.year}`
   const to = parse(end).year
-  return from === to ? `${from}` : `${from} – ${to}`
+  return from.year === to ? `${from.year}` : `${from.year} – ${to}`
 }
 
 export const formatDuration = (start: YearMonth, end: YearMonth) => {

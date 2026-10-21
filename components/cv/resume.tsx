@@ -73,6 +73,7 @@ const VentureItem = ({ item }: { item: Venture }) => (
       </h3>
       <Period start={item.start} end={item.end} />
     </header>
+    {item.description && <p className="mt-1 text-pretty break-after-avoid">{item.description}</p>}
     <Highlights items={item.highlights} />
     <StackLine items={item.stack} />
   </article>
