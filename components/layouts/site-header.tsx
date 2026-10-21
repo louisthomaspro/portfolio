@@ -31,14 +31,6 @@ export const SiteHeader = ({ className }: { className?: string }) => {
       <div className="flex items-center space-x-6 w-full justify-between md:justify-end">
         <div className="flex gap-1">
           <Link
-            href={"https://twitter.com/louisthomaspro"}
-            target="_blank"
-            aria-label="Twitter"
-            className="flex items-center p-1 text-muted-foreground hover:text-foreground transition-colors"
-          >
-            <Icons.twitter className="h-[22px]" />
-          </Link>
-          <Link
             href={"https://www.linkedin.com/in/louis-thomas"}
             target="_blank"
             aria-label="LinkedIn"
