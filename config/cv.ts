@@ -13,7 +13,7 @@ export const profile = {
     "Développeur fullstack TypeScript, plus de 9 ans d’expérience. Je combine rigueur technique, vision produit et IA appliquée pour transformer des idées en systèmes robustes et scalables. J’aime le code lisible et les architectures simples.",
   summary:
     "Développeur fullstack TypeScript avec plus de 9 ans d’expérience, dont 2 ans et demi comme CTO de Minea (SaaS à plus de 500 k€ de revenu mensuel récurrent, 4 000 inscriptions par jour). Je combine rigueur technique, vision produit et IA appliquée pour transformer des idées en systèmes robustes et scalables. J’aime le code lisible, les architectures simples et les équipes qui livrent sans se bloquer.",
-  availability: "Ouvert à un poste de Lead Dev ou de CTO, et aux missions freelance.",
+  availability: "Ouvert à un poste de Lead Dev, de Dev Fullstack senior ou de CTO, ainsi qu’à des missions freelance.",
   availabilityDetails:
     "Ouvert à un poste de Lead Dev, de Dev Fullstack senior ou de CTO, ainsi qu’à des missions freelance. Remote partout en France ou hybride autour de Toulon, déplacements ponctuels à Paris.",
 }
@@ -28,7 +28,8 @@ export const ventures: Venture[] = [
     website: "https://sealife.guide/",
     logo: SeaLife,
     summary:
-      "Guide de 1 182 espèces marines avec un assistant IA d’identification. Web, iOS et Android, utilisé dans 68 pays.",
+      "Projet personnel à but non lucratif, développé par passion pour la vie marine. 1 182 espèces, assistant IA d’identification, gratuit sur le web, iOS et Android, utilisé dans 68 pays.",
+    description: "Projet personnel à but non lucratif, développé par passion pour la vie marine.",
     highlights: [
       "1 182 espèces marines et 7 700 photos en français et en anglais, recherche et filtres par couleur, forme ou habitat.",
       "Fiches espèces enrichies et actualisées en continu par l’IA, et assistant qui identifie une espèce à partir d’une simple description.",
@@ -41,7 +42,10 @@ export const ventures: Venture[] = [
     role: "Cofondateur & CTO",
     start: "2026-02",
     end: "2026-06",
-    summary: "Analyse publicitaire par IA pour les marques e-commerce et les agences.",
+    summary:
+      "Plateforme d’analyse publicitaire par IA pour les marques e-commerce et les agences, menée jusqu’au stade prototype.",
+    description:
+      "Plateforme d’analyse publicitaire par IA pour les marques e-commerce et les agences, menée jusqu’au stade prototype.",
     highlights: [
       "Collecte et rapprochement des publicités concurrentes, des avis clients et de l’historique des tests de chaque marque.",
       "Pipelines d’analyse multimodale, d’embeddings et de regroupement des contenus.",

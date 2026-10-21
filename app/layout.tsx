@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils"
 
 const inter = Inter({ subsets: ["latin"] })
 
-const title = `${profile.name} · ${profile.headline}`
+const title = `${profile.name} | Lead Dev Fullstack TypeScript`
 
 export const metadata: Metadata = {
   metadataBase: new URL(profile.website.url),
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title,
-    description: profile.pitch,
+    description: profile.headline,
     locale: "fr_FR",
     type: "website",
     url: profile.website.url,
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title,
-    description: profile.pitch,
+    description: profile.headline,
   },
 }
 
