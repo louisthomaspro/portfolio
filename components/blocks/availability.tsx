@@ -1,35 +1,29 @@
-import Link from "next/link"
-import { MotionProps } from "framer-motion"
-
+import { profile } from "@/config/cv"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardProps, CardTitle } from "@/components/ui/card"
 import { Icons } from "@/components/icons"
-
-type CardProps = React.ComponentPropsWithoutRef<"div"> & MotionProps
 
 export const Availability = ({ className, ...props }: CardProps) => {
   return (
     <Card className={cn("flex flex-col", className)} {...props}>
       <CardHeader>
         <CardTitle>
-          <span className="flex-none mr-2 rounded-full h-2.5 w-2.5 bg-[#3baf4f]"></span>
-          Availability
+          <span className="relative flex-none mr-2 flex size-2.5">
+            <span className="motion-safe:animate-ping absolute inline-flex size-full rounded-full bg-[#3baf4f] opacity-60" />
+            <span className="relative inline-flex size-2.5 rounded-full bg-[#3baf4f]" />
+          </span>
+          Disponible
         </CardTitle>
       </CardHeader>
       <CardContent className="grow flex flex-col gap-3 justify-end">
-        <p>Available for new projects. Currently working on side projects.</p>
-        <Link
-          href={"https://www.linkedin.com/in/louis-thomas"}
-          target="_blank"
-          aria-label="LinkedIn"
-          className="flex items-center p-1 text-muted-foreground hover:text-foreground transition-colors"
-        >
-          <Button variant={"outline"} size={"sm"} className="group w-full rounded-full">
-            Contact me
+        <p className="text-pretty leading-relaxed">{profile.availability}</p>
+        <Button asChild variant={"outline"} size={"sm"} className="group w-full rounded-full">
+          <a href={profile.linkedin.url} target="_blank">
+            Me contacter
             <Icons.externalLink className="ml-2 h-3 transition-transform group-hover:translate-y-[-2px] group-hover:translate-x-[2px] group-focus-visible:translate-y-[-2px] group-focus-visible:translate-x-[2px]" />
-          </Button>
-        </Link>
+          </a>
+        </Button>
       </CardContent>
     </Card>
   )

@@ -2,50 +2,52 @@ import Image from "next/image"
 import Link from "next/link"
 import Profile from "@/public/profile.jpg"
 
+import { profile } from "@/config/cv"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
 
+const iconLinkClassName =
+  "flex items-center justify-center size-9 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+
 export const SiteHeader = ({ className }: { className?: string }) => {
   return (
     <header
-      className={cn(`flex items-start md:items-center w-full justify-between flex-col md:flex-row gap-4`, className)}
+      className={cn(
+        "animate-enter motion-reduce:animate-none flex items-start md:items-center w-full justify-between flex-col md:flex-row gap-4",
+        className
+      )}
     >
-      <div className="flex space-x-4 flex-none">
-        <div className="h-12 w-12 flex-none">
+      <div className="flex items-center gap-4 flex-none">
+        <div className="size-12 flex-none">
           <Image
             src={Profile}
             priority
-            width={400}
-            height={400}
-            alt="logo"
-            className="h-full w-full rounded-full"
+            sizes="48px"
+            alt={profile.name}
+            className="size-full rounded-full object-cover ring-1 ring-white/10"
             placeholder="blur"
           />
         </div>
         <div className="flex flex-col">
-          <div className="text-lg font-semibold">Louis THOMAS</div>
-          <div className="opacity-60 text-sm">Senior Full-Stack · Technical Lead</div>
+          <h1 className="text-lg font-semibold tracking-tight">{profile.name}</h1>
+          <p className="text-muted-foreground text-sm">{profile.headline}</p>
         </div>
       </div>
-      <div className="flex items-center space-x-6 w-full justify-between md:justify-end">
+      <nav className="flex items-center gap-2 w-full justify-between md:justify-end">
         <div className="flex gap-1">
-          <Link
-            href={"https://www.linkedin.com/in/louis-thomas"}
-            target="_blank"
-            aria-label="LinkedIn"
-            className="flex items-center p-1 text-muted-foreground hover:text-foreground transition-colors"
-          >
-            <Icons.linkedIn className="h-[22px]" />
+          <Link href={profile.linkedin.url} target="_blank" aria-label="LinkedIn" className={iconLinkClassName}>
+            <Icons.linkedIn className="h-[18px]" />
           </Link>
         </div>
-        {/* <a href="/Resume - Louis THOMAS.pdf" target="_blank">
-          <Button variant={"outline"} className="group">
-            Résumé
-            <Icons.externalLink className="ml-2 h-3 transition-transform group-hover:translate-y-[-2px] group-hover:translate-x-[2px] group-focus-visible:translate-y-[-2px] group-focus-visible:translate-x-[2px]" />
-          </Button>
-        </a> */}
-      </div>
+        <Button asChild variant={"outline"} className="group rounded-full">
+          <Link href="/cv">
+            <Icons.cv className="mr-2 h-3.5" />
+            Voir mon CV
+            <Icons.arrowRight className="ml-2 h-3 transition-transform group-hover:translate-x-0.5" />
+          </Link>
+        </Button>
+      </nav>
     </header>
   )
 }

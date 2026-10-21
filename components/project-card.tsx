@@ -1,43 +1,50 @@
 import Image from "next/image"
 import Link from "next/link"
-import { Project } from "@/types"
+import { Venture } from "@/types"
 
+import { formatYears } from "@/lib/dates"
 import { cn } from "@/lib/utils"
-import { Pill } from "@/components/pill"
+import { Icons } from "@/components/icons"
 
-export const ProjectCard = ({ project, className }: { project: Project; className?: string }) => {
+export const ProjectCard = ({ project, className }: { project: Venture; className?: string }) => {
   const content = (
     <>
-      <div className="w-12 h-12 flex-none">
-        <Image
-          src={project.imageSrc}
-          alt={project.title}
-          width={70}
-          height={70}
-          className="object-cover w-full h-full rounded-xl"
-        />
+      <div className="size-10 flex-none overflow-hidden rounded-xl border bg-white/3">
+        {project.logo ? (
+          <Image src={project.logo} alt={project.company} sizes="40px" className="size-full object-cover" />
+        ) : (
+          <div className="flex size-full items-center justify-center text-sm font-semibold text-muted-foreground">
+            {project.company.charAt(0).toUpperCase()}
+          </div>
+        )}
       </div>
-      <div className="flex flex-col min-w-0">
-        <div className="text-lg font-semibold truncate mb-1">{project.title}</div>
-        <div className="opacity-60 text-sm mb-2">{project.description}</div>
-        <div className="flex gap-1 flex-wrap">
-          {project.tags.map((tag, index) => (
-            <Pill key={index}>{tag}</Pill>
-          ))}
+      <div className="flex flex-col min-w-0 grow">
+        <div className="flex items-baseline justify-between gap-2">
+          <div className="flex items-center min-w-0 gap-1.5">
+            <span className="font-semibold truncate">{project.company}</span>
+            {project.website && (
+              <Icons.externalLink className="h-2.5 flex-none text-muted-foreground transition-transform group-hover:translate-x-[2px] group-hover:translate-y-[-2px]" />
+            )}
+          </div>
+          <span className="flex-none text-xs text-muted-foreground tabular-nums">
+            {formatYears(project.start, project.end)}
+          </span>
         </div>
+        <div className="text-xs text-muted-foreground mb-1">{project.role}</div>
+        <p className="text-muted-foreground/90 line-clamp-2 text-pretty">{project.summary}</p>
       </div>
     </>
   )
 
   if (!project.website) {
-    return <div className={cn("relative flex gap-3 px-3.5 py-4", className)}>{content}</div>
+    return <div className={cn("relative flex gap-3 px-3.5 py-3", className)}>{content}</div>
   }
 
   return (
     <Link
       href={project.website}
       target="_blank"
-      className={cn("relative flex gap-3 px-3.5 py-4 transition-colors hover:bg-accent", className)}
+      className={cn("group relative flex gap-3 px-3.5 py-3 transition-colors hover:bg-accent", className)}
     >
       {content}
     </Link>

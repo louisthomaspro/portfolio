@@ -11,7 +11,7 @@ const pillVariants = cva("block truncate", {
         "bg-accent border-[#424242] rounded-full border justify-center items-center px-2 py-0.5 inline-flex text-sm",
 
       active:
-        "bg-accent/40 border-input rounded-full border justify-center items-center px-2 py-0.5 inline-flex text-sm cursor-pointer select-none data-[state=active]:bg-[#2c3139]/90",
+        "bg-accent/40 border-input rounded-full border justify-center items-center px-2.5 py-0.5 inline-flex text-sm cursor-pointer select-none transition-colors hover:bg-accent focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring data-[state=active]:bg-[#2c3139]/90 data-[state=active]:border-[#3d4552] data-[state=active]:text-foreground",
     },
   },
   defaultVariants: {

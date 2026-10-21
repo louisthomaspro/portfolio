@@ -1,6 +1,8 @@
 import { ImageResponse } from "next/og"
 
-export const alt = "Louis Thomas — Senior Full-Stack · Technical Lead"
+import { profile } from "@/config/cv"
+
+export const alt = `${profile.name} · ${profile.headline}`
 export const size = {
   width: 1200,
   height: 630,
@@ -48,7 +50,7 @@ export default async function OpenGraphImage() {
           lineHeight: 1,
         }}
       >
-        Louis THOMAS
+        {profile.name}
       </div>
       <div
         style={{
@@ -61,7 +63,19 @@ export default async function OpenGraphImage() {
           lineHeight: 1.2,
         }}
       >
-        Senior Full-Stack · Technical Lead
+        {profile.headline}
+      </div>
+      <div
+        style={{
+          marginTop: 56,
+          fontSize: 26,
+          fontWeight: 400,
+          fontFamily: "Inter",
+          color: "rgba(232, 235, 237, 0.45)",
+          letterSpacing: "-0.2px",
+        }}
+      >
+        {`Ex-CTO de Minea · ${profile.location} · ${profile.website.label}`}
       </div>
     </div>,
     {

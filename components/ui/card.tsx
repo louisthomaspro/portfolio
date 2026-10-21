@@ -1,20 +1,17 @@
 import * as React from "react"
-import { motion, MotionProps } from "framer-motion"
 
 import { cn } from "@/lib/utils"
 
-type CardProps = React.ComponentPropsWithoutRef<"div"> & MotionProps
+export type CardProps = React.ComponentPropsWithoutRef<"div"> & { delay?: number }
 
-const Card = React.forwardRef<HTMLDivElement, CardProps>(({ className, transition, ...props }, ref) => {
+const Card = React.forwardRef<HTMLDivElement, CardProps>(({ className, delay = 0, style, ...props }, ref) => {
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ type: "spring", stiffness: 70, ...transition }}
+    <div
       ref={ref}
+      style={{ animationDelay: `${delay}ms`, ...style }}
       className={cn(
-        "will-change-transform rounded-lg border text-card-foreground shadow-xs p-3.5 bg-linear-to-tr from-[#21202236] to-[#212022d0]",
-        "hover:bg-[#212022]/50 hover:border-[#2d2d2d] hover:shadow-xs transition-colors",
+        "animate-enter motion-reduce:animate-none rounded-lg border text-card-foreground shadow-xs p-3.5 bg-linear-to-tr from-[#21202236] to-[#212022d0]",
+        "hover:bg-[#212022]/50 hover:border-[#2d2d2d] transition-colors duration-300",
         // "bg-card",
         className
       )}
