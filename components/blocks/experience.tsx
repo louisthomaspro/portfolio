@@ -52,6 +52,7 @@ export const Experience = ({ className, ...props }: CardProps) => {
             >
               <div className={cn("min-w-0", !isExpanded && "truncate")}>
                 <span className="font-medium">{item.company}</span>
+                {item.location && <span className="text-muted-foreground"> · {item.location}</span>}
                 <span className="text-muted-foreground"> · {item.role}</span>
               </div>
               <span className="flex-none text-xs text-muted-foreground tabular-nums">

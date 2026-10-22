@@ -90,6 +90,7 @@ export const experiences: Experience[] = [
   {
     company: "DBS Bank",
     role: "Lead technique produit & Chef de projet",
+    location: "Singapour",
     start: "2020-10",
     end: "2022-04",
     description:
@@ -114,7 +115,6 @@ export const experiences: Experience[] = [
   {
     company: "Decathlon France",
     role: "Développeur & IT Ops",
-    location: "Lille",
     start: "2017-09",
     end: "2020-03",
     highlights: [
@@ -130,15 +130,6 @@ export const experiences: Experience[] = [
     description:
       "Sites web et solutions sur mesure pour des artisans et des indépendants, de la définition des besoins à la livraison et aux évolutions.",
     stack: ["WordPress", "JavaScript"],
-  },
-  {
-    company: "Groupe DECIMA",
-    role: "Développeur full-stack",
-    location: "Arras",
-    start: "2017-04",
-    end: "2017-06",
-    description:
-      "Nouvelles fonctionnalités en PHP pour une application de gestion des bâtiments utilisée par une entreprise ferroviaire.",
   },
 ]
 
