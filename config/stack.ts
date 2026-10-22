@@ -10,12 +10,12 @@ import Stripe from "@/public/stack/stripe.png"
 import Supabase from "@/public/stack/supabase.png"
 import Tailwindcss from "@/public/stack/tailwindcss.png"
 import TanstackStart from "@/public/stack/tanstack-start.svg"
+import Trigger from "@/public/stack/trigger.svg"
 import Turborepo from "@/public/stack/turborepo.svg"
 import Vercel from "@/public/stack/vercel.png"
 import { BrandIcon, StackItem } from "@/types"
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core"
 import { faAws, faOpenai } from "@fortawesome/free-brands-svg-icons"
-import { faBolt } from "@fortawesome/free-solid-svg-icons"
 import { siAnthropic, siClickhouse, siModelcontextprotocol, siNodedotjs, siPostgresql, siPosthog } from "simple-icons"
 
 const fromFontAwesome = ({ icon: [width, height, , , path] }: IconDefinition, hex: string): BrandIcon => ({
@@ -161,7 +161,7 @@ export const stack: StackItem[] = [
     title: "Trigger.dev",
     description: "Jobs de fond et workflows durables",
     url: "https://trigger.dev/",
-    icon: fromFontAwesome(faBolt, "F97316"),
+    icon: Trigger,
     tags: ["ia", "infra"],
   },
   {
