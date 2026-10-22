@@ -2,17 +2,17 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import { Experience as ExperienceEntry, Venture } from "@/types"
 
 import { experiences, ventures } from "@/config/cv"
 import { formatYears } from "@/lib/dates"
 import { cn } from "@/lib/utils"
 import { Card, CardContent, CardHeader, CardProps, CardTitle } from "@/components/ui/card"
 import { Icons } from "@/components/icons"
-import { Experience as ExperienceEntry } from "@/types"
 
 const order = ["SeaLife", "Hinter", "Blime", "Minea", "DBS Bank", "Decathlon Singapore", "Decathlon France"]
 
-const byCompany = new Map<string, ExperienceEntry>(
+const byCompany = new Map<string, ExperienceEntry | Venture>(
   [...ventures, ...experiences].map((item) => [item.company, item])
 )
 
@@ -48,16 +48,21 @@ export const Experience = ({ className, ...props }: CardProps) => {
               type="button"
               aria-expanded={isExpanded}
               onClick={() => setExpanded(isExpanded ? null : item.company)}
-              className="flex items-baseline justify-between gap-3 py-2 text-left first:pt-0 last:pb-0 cursor-pointer"
+              className="flex flex-col py-2 text-left first:pt-0 last:pb-0 cursor-pointer"
             >
-              <div className={cn("min-w-0", !isExpanded && "truncate")}>
-                <span className="font-medium">{item.company}</span>
-                {item.location && <span className="text-muted-foreground"> · {item.location}</span>}
-                <span className="text-muted-foreground"> · {item.role}</span>
-              </div>
-              <span className="flex-none text-xs text-muted-foreground tabular-nums">
-                {formatYears(item.start, item.end)}
+              <span className="flex items-baseline justify-between gap-3">
+                <span className={cn("min-w-0", !isExpanded && "truncate")}>
+                  <span className="font-medium">{item.company}</span>
+                  {item.location && <span className="text-muted-foreground"> · {item.location}</span>}
+                  <span className="text-muted-foreground"> · {item.role}</span>
+                </span>
+                <span className="flex-none text-xs text-muted-foreground tabular-nums">
+                  {formatYears(item.start, item.end)}
+                </span>
               </span>
+              {"summary" in item && item.description?.includes("menée jusqu’au stade prototype") ? (
+                <span className="text-xs leading-4 text-muted-foreground">Menée jusqu’au stade prototype.</span>
+              ) : null}
             </button>
           )
         })}
