@@ -1,3 +1,6 @@
+"use client"
+
+import { useState } from "react"
 import Link from "next/link"
 
 import { experiences, ventures } from "@/config/cv"
@@ -7,7 +10,7 @@ import { Card, CardContent, CardHeader, CardProps, CardTitle } from "@/component
 import { Icons } from "@/components/icons"
 import { Experience as ExperienceEntry } from "@/types"
 
-const order = ["Hinter", "Blime", "Minea", "DBS Bank", "Decathlon Singapore", "Decathlon France"]
+const order = ["SeaLife", "Hinter", "Blime", "Minea", "DBS Bank", "Decathlon Singapore", "Decathlon France"]
 
 const byCompany = new Map<string, ExperienceEntry>(
   [...ventures, ...experiences].map((item) => [item.company, item])
@@ -19,6 +22,8 @@ const items = order.flatMap((company) => {
 })
 
 export const Experience = ({ className, ...props }: CardProps) => {
+  const [expanded, setExpanded] = useState<string | null>(null)
+
   return (
     <Card className={cn("flex flex-col", className)} {...props}>
       <CardHeader className="flex-row items-center justify-between space-y-0">
@@ -34,18 +39,27 @@ export const Experience = ({ className, ...props }: CardProps) => {
           <Icons.arrowRight className="ml-1.5 h-2.5 transition-transform group-hover:translate-x-0.5" />
         </Link>
       </CardHeader>
-      <CardContent className="mt-auto flex flex-col divide-y">
-        {items.map((item) => (
-          <div key={item.company} className="flex items-baseline justify-between gap-3 py-2.5 first:pt-0 last:pb-0">
-            <div className="min-w-0 truncate">
-              <span className="font-medium">{item.company}</span>
-              <span className="text-muted-foreground"> · {item.role}</span>
-            </div>
-            <span className="flex-none text-xs text-muted-foreground tabular-nums">
-              {formatYears(item.start, item.end)}
-            </span>
-          </div>
-        ))}
+      <CardContent className="mt-auto flex min-h-0 flex-col divide-y overflow-y-auto">
+        {items.map((item) => {
+          const isExpanded = expanded === item.company
+          return (
+            <button
+              key={item.company}
+              type="button"
+              aria-expanded={isExpanded}
+              onClick={() => setExpanded(isExpanded ? null : item.company)}
+              className="flex items-baseline justify-between gap-3 py-2 text-left first:pt-0 last:pb-0 cursor-pointer"
+            >
+              <div className={cn("min-w-0", !isExpanded && "truncate")}>
+                <span className="font-medium">{item.company}</span>
+                <span className="text-muted-foreground"> · {item.role}</span>
+              </div>
+              <span className="flex-none text-xs text-muted-foreground tabular-nums">
+                {formatYears(item.start, item.end)}
+              </span>
+            </button>
+          )
+        })}
       </CardContent>
     </Card>
   )

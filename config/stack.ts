@@ -152,7 +152,7 @@ export const stack: StackItem[] = [
     id: "grok-bot",
     title: "Grok Bot",
     description: "Agents IA pour automatiser ses workflows",
-    url: "https://play.google.com/store/apps/details?id=ai.x.grok.bot",
+    url: "https://x.ai/bot",
     icon: GrokBot,
     tags: ["ia", "tools"],
   },
