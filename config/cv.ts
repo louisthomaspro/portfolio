@@ -131,7 +131,6 @@ export const experiences: Experience[] = [
     end: "2019-03",
     description:
       "Sites web et solutions sur mesure pour des artisans et des indépendants, de la définition des besoins à la livraison et aux évolutions.",
-    stack: ["WordPress", "JavaScript"],
   },
 ]
 
