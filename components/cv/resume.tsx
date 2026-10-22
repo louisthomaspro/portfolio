@@ -1,3 +1,5 @@
+import Image from "next/image"
+import Profile from "@/public/profile.jpg"
 import { Experience, Venture } from "@/types"
 
 import { awards, education, experiences, languages, profile, skills, ventures } from "@/config/cv"
@@ -92,12 +94,21 @@ export const Resume = ({ className }: { className?: string }) => {
       )}
     >
       <header className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <h1 className="text-[28px] font-semibold leading-tight tracking-tight text-neutral-950">{profile.name}</h1>
-          <p className="mt-0.5 text-[14px] text-neutral-700">{profile.headline}</p>
-          <p className="mt-1 text-xs text-neutral-500">
-            {profile.location} · {profile.workMode}
-          </p>
+        <div className="flex items-center gap-4">
+          <Image
+            src={Profile}
+            priority
+            sizes="72px"
+            alt={profile.name}
+            className="size-[72px] flex-none rounded-full object-cover ring-1 ring-neutral-200"
+          />
+          <div>
+            <h1 className="text-[28px] font-semibold leading-tight tracking-tight text-neutral-950">{profile.name}</h1>
+            <p className="mt-0.5 text-[14px] text-neutral-700">{profile.headline}</p>
+            <p className="mt-1 text-xs text-neutral-500">
+              {profile.location} · {profile.workMode}
+            </p>
+          </div>
         </div>
         <ul className="flex flex-col gap-0.5 text-xs text-neutral-600 sm:items-end">
           {contacts.map((contact) => (
