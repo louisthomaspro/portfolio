@@ -1,13 +1,22 @@
 import Link from "next/link"
 
-import { experiences } from "@/config/cv"
+import { experiences, ventures } from "@/config/cv"
 import { formatYears } from "@/lib/dates"
 import { cn } from "@/lib/utils"
 import { Card, CardContent, CardHeader, CardProps, CardTitle } from "@/components/ui/card"
 import { Icons } from "@/components/icons"
+import { Experience as ExperienceEntry } from "@/types"
 
-const featured = experiences.find((item) => item.metrics) ?? experiences[0]
-const others = experiences.filter((item) => item !== featured)
+const order = ["Hinter", "Blime", "Minea", "DBS Bank", "Decathlon Singapore", "Decathlon France"]
+
+const byCompany = new Map<string, ExperienceEntry>(
+  [...ventures, ...experiences].map((item) => [item.company, item])
+)
+
+const items = order.flatMap((company) => {
+  const item = byCompany.get(company)
+  return item ? [item] : []
+})
 
 export const Experience = ({ className, ...props }: CardProps) => {
   return (
@@ -25,39 +34,18 @@ export const Experience = ({ className, ...props }: CardProps) => {
           <Icons.arrowRight className="ml-1.5 h-2.5 transition-transform group-hover:translate-x-0.5" />
         </Link>
       </CardHeader>
-      <CardContent className="grow flex flex-col gap-3">
-        <div>
-          <div className="flex items-baseline justify-between gap-2">
-            <div className="font-semibold">{featured.company}</div>
-            <div className="text-xs text-muted-foreground tabular-nums">
-              {formatYears(featured.start, featured.end)}
+      <CardContent className="mt-auto flex flex-col divide-y">
+        {items.map((item) => (
+          <div key={item.company} className="flex items-baseline justify-between gap-3 py-2.5 first:pt-0 last:pb-0">
+            <div className="min-w-0 truncate">
+              <span className="font-medium">{item.company}</span>
+              <span className="text-muted-foreground"> · {item.role}</span>
             </div>
+            <span className="flex-none text-xs text-muted-foreground tabular-nums">
+              {formatYears(item.start, item.end)}
+            </span>
           </div>
-          <div className="text-muted-foreground">{featured.role}</div>
-        </div>
-        {featured.metrics && (
-          <div className="grid grid-cols-2 gap-2">
-            {featured.metrics.map((metric) => (
-              <div key={metric.label} className="rounded-md border bg-white/2 px-3 py-2">
-                <div className="text-xl font-semibold tracking-tight whitespace-nowrap">{metric.value}</div>
-                <div className="text-xs text-muted-foreground">{metric.label}</div>
-              </div>
-            ))}
-          </div>
-        )}
-        <ul className="mt-auto flex flex-col divide-y">
-          {others.slice(0, 3).map((item) => (
-            <li key={item.company} className="flex items-baseline justify-between gap-3 py-2 last:pb-0">
-              <div className="min-w-0 truncate">
-                <span className="font-medium">{item.company}</span>
-                <span className="text-muted-foreground"> · {item.role}</span>
-              </div>
-              <span className="flex-none text-xs text-muted-foreground tabular-nums">
-                {formatYears(item.start, item.end)}
-              </span>
-            </li>
-          ))}
-        </ul>
+        ))}
       </CardContent>
     </Card>
   )

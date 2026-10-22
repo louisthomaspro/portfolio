@@ -37,7 +37,7 @@ export const ventures: Venture[] = [
     stack: ["TanStack Start", "Supabase", "Vercel", "AWS S3", "PostHog"],
   },
   {
-    company: "joinhinter",
+    company: "Hinter",
     role: "Cofondateur & CTO",
     start: "2026-02",
     end: "2026-06",
@@ -66,13 +66,6 @@ export const ventures: Venture[] = [
 ]
 
 export const experiences: Experience[] = [
-  {
-    company: "Polygone Studio",
-    role: "Cofondateur & CTO",
-    start: "2026-10",
-    description:
-      "Studio qui accompagne les entreprises dans la conception et le développement de leurs produits web : applications SaaS, logiciels métiers, automatisations et intégrations IA.",
-  },
   {
     company: "Minea",
     role: "CTO & Développeur full-stack",
