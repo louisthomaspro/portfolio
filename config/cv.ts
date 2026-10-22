@@ -28,11 +28,11 @@ export const ventures: Venture[] = [
     website: "https://sealife.guide/",
     logo: SeaLife,
     summary:
-      "Projet personnel à but non lucratif, développé par passion pour la vie marine. Guide de 1 182 espèces marines avec un assistant IA d’identification. Web, iOS et Android, utilisé dans 68 pays.",
+      "Projet personnel à but non lucratif, développé par passion pour la vie marine. Guide de 1 182 espèces marines avec un assistant IA d’identification. Web, iOS et Android.",
     highlights: [
       "1 182 espèces marines et 7 700 photos en français et en anglais, recherche et filtres par couleur, forme ou habitat.",
       "Fiches espèces enrichies et actualisées en continu par l’IA, et assistant qui identifie une espèce à partir d’une simple description.",
-      "Développé par passion pour la vie marine, disponible gratuitement sur le web, iOS et Android, utilisé dans 68 pays.",
+      "Développé par passion pour la vie marine, disponible gratuitement sur le web, iOS et Android.",
     ],
     stack: ["TanStack Start", "Supabase", "Vercel", "AWS S3", "PostHog"],
   },
