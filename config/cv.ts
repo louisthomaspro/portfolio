@@ -9,6 +9,7 @@ export const profile = {
   workMode: "Remote ou hybride",
   website: { label: "louisthomas.pro", url: "https://louisthomas.pro" } satisfies Link,
   linkedin: { label: "linkedin.com/in/louis-thomas", url: "https://www.linkedin.com/in/louis-thomas" } satisfies Link,
+  phone: { label: "06 51 49 70 56", url: "tel:+33651497056" } satisfies Link,
   pitch:
     "Développeur fullstack TypeScript, plus de 9 ans d’expérience. Je combine rigueur technique, vision produit et IA appliquée pour transformer des idées en systèmes robustes et scalables. J’aime le code lisible et les architectures simples.",
   summary:
