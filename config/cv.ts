@@ -57,9 +57,9 @@ export const ventures: Venture[] = [
     start: "2025-12",
     end: "2026-01",
     logo: Blime,
-    summary: "Recherche et analyse de créateurs YouTube pour les marques, sur 10 millions de créateurs indexés.",
+    summary: "Recherche et analyse de créateurs YouTube pour les marques, pouvant indexer jusqu’à 10 millions de créateurs.",
     highlights: [
-      "Moteur de recherche sur 10 millions de créateurs YouTube indexés.",
+      "Moteur de recherche pouvant indexer jusqu’à 10 millions de créateurs YouTube.",
       "Pipelines d’enrichissement des profils : liens des vidéos, fréquence de publication, médiane des vues.",
       "Lancement auprès des premiers utilisateurs avec abonnements payants.",
     ],
