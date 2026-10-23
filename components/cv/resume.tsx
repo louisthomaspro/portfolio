@@ -82,7 +82,7 @@ const VentureItem = ({ item }: { item: Venture }) => (
 )
 
 export const Resume = ({ className }: { className?: string }) => {
-  const contacts = [profile.website, profile.linkedin]
+  const contacts = [profile.website, profile.linkedin, profile.phone]
 
   return (
     <article
