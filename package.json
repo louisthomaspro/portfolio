@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && node scripts/generate-cv-pdf.mjs",
     "start": "next start",
     "lint": "eslint .",
     "ngrok": "npx ngrok http 3000"
@@ -15,14 +15,12 @@
     "@fortawesome/free-solid-svg-icons": "^7.3.1",
     "@fortawesome/react-fontawesome": "^3.5.0",
     "@radix-ui/react-slot": "^1.5.0",
-    "@sparticuz/chromium": "^153.0.0",
     "@vercel/analytics": "^2.0.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^14.2.0",
     "mapbox-gl": "^3.33.0",
     "next": "16.4.2",
-    "puppeteer-core": "^25.15.0",
     "react": "19.3.1",
     "react-dom": "19.3.1",
     "react-map-gl": "^8.1.3",
@@ -32,6 +30,7 @@
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.7.1",
+    "@sparticuz/chromium": "^153.0.0",
     "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "^26.6.5",
     "@types/react": "19.3.0",
@@ -42,6 +41,7 @@
     "eslint-plugin-tailwindcss": "^4.4.0",
     "postcss": "^8.5.30",
     "prettier": "^3.9.10",
+    "puppeteer-core": "^25.15.0",
     "tailwindcss": "^4.3.3",
     "typescript": "^6.0.3"
   }

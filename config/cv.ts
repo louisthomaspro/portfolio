@@ -4,7 +4,7 @@ import { Education, Experience, Link, SkillGroup, Venture } from "@/types"
 
 export const profile = {
   name: "Louis Thomas",
-  headline: "Lead Dev · Fullstack TypeScript, Next.js, IA",
+  headline: "Lead Dev · Fullstack TypeScript, React, AI, Remote ou Toulon",
   location: "Toulon, France",
   workMode: "Remote ou hybride",
   website: { label: "louisthomas.pro", url: "https://louisthomas.pro" } satisfies Link,

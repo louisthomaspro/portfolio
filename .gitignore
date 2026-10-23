@@ -15,6 +15,7 @@
 
 # production
 /build
+/public/cv.pdf
 
 # misc
 .DS_Store

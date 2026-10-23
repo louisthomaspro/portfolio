@@ -23,9 +23,6 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.5.0
         version: 1.5.0(@types/react@19.3.0)(react@19.3.1)
-      '@sparticuz/chromium':
-        specifier: ^153.0.0
-        version: 153.0.0
       '@vercel/analytics':
         specifier: ^2.0.1
         version: 2.0.1(next@16.4.2(@babel/core@7.29.7)(@types/node@26.6.5)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react@19.3.1)
@@ -44,9 +41,6 @@ importers:
       next:
         specifier: 16.4.2
         version: 16.4.2(@babel/core@7.29.7)(@types/node@26.6.5)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
-      puppeteer-core:
-        specifier: ^25.15.0
-        version: 25.15.0
       react:
         specifier: 19.3.1
         version: 19.3.1
@@ -69,6 +63,9 @@ importers:
       '@ianvs/prettier-plugin-sort-imports':
         specifier: ^4.7.1
         version: 4.7.1(prettier@3.9.10)
+      '@sparticuz/chromium':
+        specifier: ^153.0.0
+        version: 153.0.0
       '@tailwindcss/postcss':
         specifier: ^4.3.3
         version: 4.3.3
@@ -99,6 +96,9 @@ importers:
       prettier:
         specifier: ^3.9.10
         version: 3.9.10
+      puppeteer-core:
+        specifier: ^25.15.0
+        version: 25.15.0
       tailwindcss:
         specifier: ^4.3.3
         version: 4.3.3
