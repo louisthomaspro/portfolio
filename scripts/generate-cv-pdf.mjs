@@ -1,5 +1,5 @@
 import { spawn } from "node:child_process"
-import { existsSync } from "node:fs"
+import { existsSync, readFileSync } from "node:fs"
 import { mkdir, writeFile } from "node:fs/promises"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
@@ -9,7 +9,11 @@ import puppeteer from "puppeteer-core"
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..")
 const port = Number(process.env.CV_PORT ?? 3999)
 const origin = process.env.CV_ORIGIN ?? `http://127.0.0.1:${port}`
-const output = path.join(root, "public", "cv.pdf")
+const cvFileName = readFileSync(path.join(root, "config", "cv.ts"), "utf8").match(
+  /export const cvFileName = "([^"]+)"/
+)?.[1]
+if (!cvFileName) throw new Error("Could not read cvFileName from config/cv.ts")
+const output = path.join(root, "public", cvFileName)
 
 const LOCAL_CHROME_PATHS = {
   win32: "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",

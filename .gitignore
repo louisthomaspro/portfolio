@@ -15,7 +15,7 @@
 
 # production
 /build
-/public/cv.pdf
+/public/CV-Louis-Thomas.pdf
 
 # misc
 .DS_Store
