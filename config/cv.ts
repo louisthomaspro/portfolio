@@ -4,19 +4,19 @@ import { Education, Experience, Link, SkillGroup, Venture } from "@/types"
 
 export const profile = {
   name: "Louis Thomas",
-  headline: "Lead Dev · Fullstack TypeScript, React, AI, Remote ou Toulon",
+  headline: "Tech Lead · TypeScript, React, AI, Remote ou Toulon",
   location: "Toulon, France",
   workMode: "Remote ou hybride",
   website: { label: "louisthomas.pro", url: "https://louisthomas.pro" } satisfies Link,
   linkedin: { label: "linkedin.com/in/louis-thomas", url: "https://www.linkedin.com/in/louis-thomas" } satisfies Link,
   phone: { label: "06 51 49 70 56", url: "tel:+33651497056" } satisfies Link,
   pitch:
-    "Développeur fullstack TypeScript, plus de 9 ans d’expérience. Je combine rigueur technique, vision produit et IA appliquée pour transformer des idées en systèmes robustes et scalables. J’aime le code lisible et les architectures simples.",
+    "Tech Lead, plus de 9 ans d’expérience en TypeScript. Je combine rigueur technique, vision produit et IA appliquée pour transformer des idées en systèmes robustes et scalables. J’aime le code lisible et les architectures simples.",
   summary:
-    "Développeur fullstack TypeScript avec plus de 9 ans d’expérience, dont 2 ans et demi comme CTO de Minea (SaaS à plus de 500 k€ de revenu mensuel récurrent, 4 000 inscriptions par jour). Je combine rigueur technique, vision produit et IA appliquée pour transformer des idées en systèmes robustes et scalables. J’aime le code lisible, les architectures simples et les équipes qui livrent sans se bloquer.",
-  availability: "Ouvert à un poste de Lead Dev ou de CTO, et aux missions freelance.",
+    "Tech Lead avec plus de 9 ans d’expérience en TypeScript, dont 2 ans et demi comme CTO de Minea (SaaS à plus de 500 k€ de revenu mensuel récurrent, 4 000 inscriptions par jour). Je combine rigueur technique, vision produit et IA appliquée pour transformer des idées en systèmes robustes et scalables. J’aime le code lisible, les architectures simples et les équipes qui livrent sans se bloquer.",
+  availability: "Ouvert à un poste de Tech Lead ou de CTO, et aux missions freelance.",
   availabilityDetails:
-    "Ouvert à un poste de Lead Dev, de Dev Fullstack senior ou de CTO, ainsi qu’à des missions freelance. Remote partout en France ou hybride autour de Toulon, déplacements ponctuels à Paris.",
+    "Ouvert à un poste de Tech Lead ou de CTO, ainsi qu’à des missions freelance. Remote partout en France ou hybride autour de Toulon, déplacements ponctuels à Paris.",
 }
 
 export const cvFileName = "CV-Louis-Thomas.pdf"
