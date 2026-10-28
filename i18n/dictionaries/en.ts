@@ -92,6 +92,21 @@ export const dictionary = {
       ],
     },
   ] satisfies Experience[],
+  decathlonHome: [
+    {
+      company: "Decathlon Singapore",
+      role: "Developer · Scrum Master",
+      location: "Singapore",
+      start: "2020-03",
+      end: "2020-08",
+    },
+    {
+      company: "Decathlon France",
+      role: "Developer · IT Ops",
+      start: "2017-09",
+      end: "2020-03",
+    },
+  ] satisfies Experience[],
   skills: [
     { label: "Front", items: ["TypeScript", "Next.js", "React", "TanStack", "Tailwind"] },
     { label: "Back", items: ["Node.js", "PostgreSQL", "Supabase", "Stripe"] },

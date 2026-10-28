@@ -1,4 +1,5 @@
 import { getLocalizedStack, getStackTags } from "@/config/stack"
+import { Experience as ExperienceEntry } from "@/types"
 import { Locale } from "@/i18n/config"
 import { getDictionary } from "@/i18n/get-dictionary"
 import { cn } from "@/lib/utils"
@@ -12,7 +13,11 @@ import { SiteHeader } from "@/components/layouts/site-header"
 
 export const HomePage = async ({ lang }: { lang: Locale }) => {
   const dictionary = await getDictionary(lang)
-  const { profile, ventures, experiences, ui } = dictionary
+  const { profile, ventures, experiences, decathlonHome, ui } = dictionary
+
+  const experiencesForHome = experiences.flatMap((item): ExperienceEntry[] =>
+    item.company === "Decathlon" ? [...decathlonHome] : [item]
+  )
 
   return (
     <main className="flex flex-col items-center container min-h-dvh">
@@ -56,7 +61,7 @@ export const HomePage = async ({ lang }: { lang: Locale }) => {
             delay={250}
             lang={lang}
             ventures={ventures}
-            experiences={experiences}
+            experiences={experiencesForHome}
             experienceLabel={ui.experience}
             fullCvLabel={ui.fullCv}
             dates={ui.dates}
