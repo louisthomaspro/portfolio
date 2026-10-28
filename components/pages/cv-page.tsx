@@ -35,7 +35,15 @@ export const CvPage = async ({ lang }: { lang: Locale }) => {
           </Link>
           <div className="flex items-center gap-3">
             <LanguageSwitch lang={lang} path="/cv" />
-            <DownloadButton cvFileName={cvFileNames[lang]} label={dictionary.ui.downloadPdf} />
+            <DownloadButton
+              href={
+                process.env.NODE_ENV === "development"
+                  ? `/api/cv/pdf?lang=${lang}`
+                  : `/${cvFileNames[lang]}`
+              }
+              cvFileName={cvFileNames[lang]}
+              label={dictionary.ui.downloadPdf}
+            />
           </div>
         </div>
       </nav>

@@ -120,7 +120,7 @@ export const Resume = ({
   dictionary: Dictionary
   className?: string
 }) => {
-  const { profile, ventures, experiences, skills, education, languages, awards, ui } = dictionary
+  const { profile, ventures, experiences, skills, education, languages, ui } = dictionary
   const contacts = [profile.website, profile.linkedin, profile.phone]
   const sections = ui.sections
 
@@ -164,7 +164,6 @@ export const Resume = ({
       <div className="mt-6 space-y-6">
         <Section title={sections.profile}>
           <p className="text-pretty">{profile.summary}</p>
-          <p className="mt-1.5 text-pretty text-neutral-600">{profile.availabilityDetails}</p>
         </Section>
 
         <Section title={sections.experience}>
@@ -192,18 +191,18 @@ export const Resume = ({
           </div>
         </Section>
 
-        <Section title={sections.skills} className="break-inside-avoid">
-          <dl className="space-y-0.5">
+        <Section title={sections.skills} className="break-inside-avoid print:[&_h2]:mb-1.5">
+          <dl className="grid grid-cols-1 gap-x-6 gap-y-0.5 sm:grid-cols-2 print:grid-cols-2">
             {skills.map((group) => (
-              <div key={group.label} className="flex gap-3">
-                <dt className="w-20 flex-none font-semibold text-neutral-900">{group.label}</dt>
-                <dd>{group.items.join(", ")}</dd>
+              <div key={group.label} className="flex gap-2 min-w-0">
+                <dt className="w-[4.5rem] flex-none text-[11px] font-semibold text-neutral-900 print:w-14">{group.label}</dt>
+                <dd className="min-w-0 text-[11px] print:leading-snug">{group.items.join(", ")}</dd>
               </div>
             ))}
           </dl>
         </Section>
 
-        <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-[1.5fr_1fr_1fr] break-inside-avoid">
+        <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-[1.5fr_1fr] break-inside-avoid">
           <Section title={sections.education}>
             <ul className="space-y-1.5">
               {education.map((item) => (
@@ -223,18 +222,8 @@ export const Resume = ({
             <ul className="space-y-1.5">
               {languages.map((item) => (
                 <li key={item.label}>
-                  <div className="font-semibold text-neutral-900">{item.label}</div>
-                  <div>{item.level}</div>
-                </li>
-              ))}
-            </ul>
-          </Section>
-          <Section title={sections.awards}>
-            <ul className="space-y-1.5">
-              {awards.map((item) => (
-                <li key={item.label}>
-                  <div className="font-semibold text-neutral-900">{item.label}</div>
-                  <div>{item.detail}</div>
+                  <span className="font-semibold text-neutral-900">{item.label}</span>
+                  <span> · {item.level}</span>
                 </li>
               ))}
             </ul>

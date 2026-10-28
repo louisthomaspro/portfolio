@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   agentRules: false,
+  serverExternalPackages: ["puppeteer-core"],
   experimental: {
     agentUpgrade: "security",
   },

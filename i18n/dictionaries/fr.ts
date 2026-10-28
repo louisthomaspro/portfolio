@@ -6,19 +6,19 @@ import { siteUrl } from "@/i18n/config"
 export const dictionary = {
   profile: {
     name: "Louis Thomas",
-    headline: "Tech Lead / Fullstack · TypeScript, React, AI, Remote ou Toulon",
+    headline: "Tech Lead / Dev Fullstack · TypeScript, React, AI",
     location: "Toulon, France",
     workMode: "Remote ou hybride",
     website: { label: "louisthomas.pro", url: siteUrl } satisfies Link,
     linkedin: { label: "linkedin.com/in/louis-thomas", url: "https://www.linkedin.com/in/louis-thomas" } satisfies Link,
     phone: { label: "06 51 49 70 56", url: "tel:+33651497056" } satisfies Link,
     pitch:
-      "Tech Lead / Fullstack, plus de 9 ans d’expérience en TypeScript. Je combine rigueur technique, vision produit et IA appliquée pour transformer des idées en systèmes robustes et scalables. J’aime le code lisible et les architectures simples.",
+      "Tech Lead / Dev Fullstack, plus de 9 ans d’expérience en TypeScript, ex-CTO Minea. J’aime construire des produits de bout en bout, de l’architecture à l’expérience utilisateur, en conciliant exigences techniques et enjeux business. Code lisible et solutions faciles à maintenir.",
     summary:
-      "Tech Lead / Fullstack avec plus de 9 ans d’expérience en TypeScript, dont 2 ans et demi comme CTO de Minea (SaaS à plus de 500 k€ de revenu mensuel récurrent, 4 000 inscriptions par jour). Je combine rigueur technique, vision produit et IA appliquée pour transformer des idées en systèmes robustes et scalables. J’aime le code lisible, les architectures simples et les équipes qui livrent sans se bloquer.",
-    availability: "Ouvert à un poste de Tech Lead / Fullstack ou de CTO, et aux missions freelance.",
+      "Tech Lead / Dev Fullstack avec plus de 9 ans d’expérience en TypeScript, dont 2 ans et demi comme CTO de Minea (SaaS à plus de 500 k€ de MRR). J’aime construire des produits de bout en bout, de l’architecture à l’expérience utilisateur, en conciliant exigences techniques et enjeux business. Face aux défis techniques complexes, je privilégie un code lisible et des solutions faciles à maintenir et à faire évoluer.",
+    availability: "Ouvert à un poste de Tech Lead / Dev Fullstack ou de CTO, et aux missions freelance.",
     availabilityDetails:
-      "Ouvert à un poste de Tech Lead / Fullstack ou de CTO, ainsi qu’à des missions freelance. Remote partout en France ou hybride autour de Toulon, déplacements ponctuels à Paris.",
+      "Ouvert à un poste de Tech Lead / Dev Fullstack ou de CTO, ainsi qu’à des missions freelance. Remote partout en France ou hybride autour de Toulon, déplacements ponctuels à Paris.",
   },
   ventures: [
     {
@@ -31,11 +31,9 @@ export const dictionary = {
         "Analyse publicitaire par IA pour les marques e-commerce et les agences, menée jusqu’au stade prototype.",
       note: "Menée jusqu’au stade prototype.",
       highlights: [
-        "Collecte et rapprochement des publicités concurrentes, des avis clients et de l’historique des tests de chaque marque.",
-        "Pipelines d’analyse multimodale, d’embeddings et de regroupement des contenus.",
+        "Collecte des publicités concurrentes, avis clients et historiques de tests ; analyse LLM et embeddings pour regrouper les créations et faire émerger les tendances marketing.",
         "Dashboard et serveur MCP pour consulter les analyses d’une marque.",
       ],
-      stack: ["TanStack Start", "Supabase", "Trigger.dev", "Vercel"],
     },
     {
       company: "Blime",
@@ -44,12 +42,11 @@ export const dictionary = {
       end: "2026-01",
       logo: Blime,
       summary: "Recherche et analyse de créateurs YouTube pour les marques, pouvant indexer jusqu’à 10 millions de créateurs.",
+      description: "Moteur de recherche d’influenceurs YouTube.",
       highlights: [
-        "Moteur de recherche pouvant indexer jusqu’à 10 millions de créateurs YouTube.",
-        "Pipelines d’enrichissement des profils : liens des vidéos, fréquence de publication, médiane des vues.",
+        "Pipelines data qui ingèrent, enrichissent et mettent à jour des millions de créateurs et de vidéos YouTube.",
         "Lancement auprès des premiers utilisateurs avec abonnements payants.",
       ],
-      stack: ["Next.js", "Supabase", "Elasticsearch", "Stripe", "AWS"],
     },
   ] satisfies Venture[],
   experiences: [
@@ -65,14 +62,11 @@ export const dictionary = {
         { value: "4 000", label: "inscriptions / jour" },
       ],
       highlights: [
-        "Refonte de l’architecture en Next.js et pilotage de la transition de la V1 à la V2.",
+        "Refonte de l’architecture en Next.js pour gagner en flexibilité et accélérer l’itération produit.",
         "Optimisation des performances pour absorber les pics de trafic liés aux campagnes marketing et aux webinaires.",
-        "Pipelines d’embeddings pour les images et les vidéos, et tagging automatique des publicités à grande échelle.",
         "Automatisation du support avec l’IA.",
-        "Accompagnement technique de deux développeurs.",
-        "Collaboration avec le CDO et le CMO sur les fonctionnalités, l’expérience utilisateur et les besoins marketing.",
+        "Collaboration CDO/CMO sur produit, UX et marketing.",
       ],
-      stack: ["Next.js", "Vercel", "PostgreSQL", "ClickHouse", "Elasticsearch", "Stripe"],
     },
     {
       company: "DBS Bank",
@@ -80,65 +74,37 @@ export const dictionary = {
       location: "Singapour",
       start: "2020-10",
       end: "2022-04",
-      description:
-        "Pilotage technique du périmètre produit et gestion de projet dans une équipe de 8 à 10 personnes, en binôme avec le lead data.",
+      description: "Construction d’un CRM interne avec une équipe de 10 personnes.",
       highlights: [
-        "Définition de l’architecture front-end et de la roadmap technique d’un CRM interne.",
-        "Accompagnement des développeurs et résolution des difficultés techniques.",
+        "Définition de l’architecture front-end et de la roadmap technique.",
         "Coordination avec des équipes réparties dans plusieurs pays.",
       ],
     },
     {
-      company: "Decathlon Singapore",
-      role: "Scrum Master & Développeur",
-      location: "Singapour",
-      start: "2020-03",
+      company: "Decathlon",
+      role: "Développeur · IT Ops",
+      location: "France · Singapour",
+      start: "2017-09",
       end: "2020-08",
       highlights: [
-        "Développement d’API avec Spring Boot pour une nouvelle application mobile e-commerce.",
-        "Coordination des équipes internationales et animation des pratiques agiles en tant que Scrum Master.",
+        "Maintenance et évolution d’applications de formation ; outils de reporting et d’analyse pour les équipes métier.",
+        "Backend et coordination agile sur une application mobile e-commerce (Singapour), avec des équipes internationales.",
       ],
-    },
-    {
-      company: "Decathlon France",
-      role: "Développeur & IT Ops",
-      start: "2017-09",
-      end: "2020-03",
-      highlights: [
-        "Maintenance et évolution d’applications de formation, avec un travail sur leur fiabilité et leur facilité d’utilisation.",
-        "Développement d’outils de reporting et d’analyse pour le suivi de l’activité et l’aide à la décision des équipes métier.",
-      ],
-    },
-    {
-      company: "Freelance",
-      role: "Développeur web",
-      start: "2014-01",
-      end: "2019-03",
-      description:
-        "Sites web et solutions sur mesure pour des artisans et des indépendants, de la définition des besoins à la livraison et aux évolutions.",
     },
   ] satisfies Experience[],
   skills: [
-    { label: "Front", items: ["TypeScript", "Next.js", "React", "TanStack", "Tailwind CSS"] },
+    { label: "Front", items: ["TypeScript", "Next.js", "React", "TanStack", "Tailwind"] },
     { label: "Back", items: ["Node.js", "PostgreSQL", "Supabase", "Stripe"] },
-    {
-      label: "Data",
-      items: ["Pipelines ETL et d’enrichissement", "ClickHouse", "Elasticsearch", "Recherche vectorielle"],
-    },
-    { label: "IA", items: ["Orchestration de LLM", "Embeddings multimodaux", "Workflows automatisés", "MCP"] },
-    { label: "Infra", items: ["Vercel", "AWS", "Trigger.dev", "CI/CD"] },
-    { label: "Leadership", items: ["Architecture logicielle", "Encadrement technique", "Scrum", "Gestion de projet"] },
+    { label: "Data & IA", items: ["ETL", "ClickHouse", "Elasticsearch", "LLM", "Embeddings", "MCP"] },
+    { label: "Infra", items: ["Vercel", "AWS", "Docker", "CI/CD"] },
   ] satisfies SkillGroup[],
   education: [
     { school: "Polytech Tours", degree: "Diplôme d’ingénieur, informatique", start: 2017, end: 2020 },
-    { school: "IUT de Lens", degree: "DUT Informatique", start: 2015, end: 2017 },
-    { school: "Lycée Jean Monnet", degree: "Baccalauréat, sciences de l’ingénieur", start: 2012, end: 2015 },
   ] satisfies Education[],
   languages: [
     { label: "Français", level: "Langue maternelle" },
-    { label: "Anglais", level: "Courant, usage professionnel" },
+    { label: "Anglais", level: "Courant" },
   ],
-  awards: [{ label: "Hackathon UTC Compiègne", detail: "Prix du design, 2e au classement général" }],
   ui: {
     viewCv: "Voir mon CV",
     fullCv: "CV complet",
@@ -161,7 +127,6 @@ export const dictionary = {
       skills: "Compétences",
       education: "Formation",
       languages: "Langues",
-      awards: "Distinctions",
     },
     dates: {
       present: "aujourd’hui",

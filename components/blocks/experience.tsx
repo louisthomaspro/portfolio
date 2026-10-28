@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils"
 import { Card, CardContent, CardHeader, CardProps, CardTitle } from "@/components/ui/card"
 import { Icons } from "@/components/icons"
 
-const order = ["Hinter", "Blime", "Minea", "DBS Bank", "Decathlon Singapore", "Decathlon France"]
+const order = ["Hinter", "Blime", "Minea", "DBS Bank", "Decathlon"]
 
 export const Experience = ({
   lang,
