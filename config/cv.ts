@@ -1,5 +1,5 @@
 import Blime from "@/public/projects/blime.jpg"
-import SeaLife from "@/public/projects/sea-life.png"
+// import SeaLife from "@/public/projects/sea-life.png"
 import { Education, Experience, Link, SkillGroup, Venture } from "@/types"
 
 export const profile = {
@@ -22,21 +22,21 @@ export const profile = {
 export const cvFileName = "CV-Louis-Thomas.pdf"
 
 export const ventures: Venture[] = [
-  {
-    company: "SeaLife",
-    role: "Projet personnel à but non lucratif",
-    start: "2023",
-    website: "https://sealife.guide/",
-    logo: SeaLife,
-    summary:
-      "Projet personnel à but non lucratif, développé par passion pour la vie marine. Guide de 1 182 espèces marines avec un assistant IA d’identification. Web, iOS et Android.",
-    highlights: [
-      "1 182 espèces marines et 7 700 photos en français et en anglais, recherche et filtres par couleur, forme ou habitat.",
-      "Fiches espèces enrichies et actualisées en continu par l’IA, et assistant qui identifie une espèce à partir d’une simple description.",
-      "Développé par passion pour la vie marine, disponible gratuitement sur le web, iOS et Android.",
-    ],
-    stack: ["TanStack Start", "Supabase", "Vercel", "AWS S3", "PostHog"],
-  },
+  // {
+  //   company: "SeaLife",
+  //   role: "Projet personnel à but non lucratif",
+  //   start: "2023",
+  //   website: "https://sealife.guide/",
+  //   logo: SeaLife,
+  //   summary:
+  //     "Projet personnel à but non lucratif, développé par passion pour la vie marine. Guide de 1 182 espèces marines avec un assistant IA d’identification. Web, iOS et Android.",
+  //   highlights: [
+  //     "1 182 espèces marines et 7 700 photos en français et en anglais, recherche et filtres par couleur, forme ou habitat.",
+  //     "Fiches espèces enrichies et actualisées en continu par l’IA, et assistant qui identifie une espèce à partir d’une simple description.",
+  //     "Développé par passion pour la vie marine, disponible gratuitement sur le web, iOS et Android.",
+  //   ],
+  //   stack: ["TanStack Start", "Supabase", "Vercel", "AWS S3", "PostHog"],
+  // },
   {
     company: "Hinter",
     role: "Cofondateur & CTO",

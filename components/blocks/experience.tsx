@@ -10,7 +10,15 @@ import { cn } from "@/lib/utils"
 import { Card, CardContent, CardHeader, CardProps, CardTitle } from "@/components/ui/card"
 import { Icons } from "@/components/icons"
 
-const order = ["SeaLife", "Hinter", "Blime", "Minea", "DBS Bank", "Decathlon Singapore", "Decathlon France"]
+const order = [
+  // "SeaLife",
+  "Hinter",
+  "Blime",
+  "Minea",
+  "DBS Bank",
+  "Decathlon Singapore",
+  "Decathlon France",
+]
 
 const byCompany = new Map<string, ExperienceEntry | Venture>(
   [...ventures, ...experiences].map((item) => [item.company, item])
