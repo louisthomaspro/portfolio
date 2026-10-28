@@ -26,6 +26,7 @@ export type Experience = {
 
 export type Venture = Experience & {
   summary: string
+  note?: string
   website?: string
   logo?: StaticImageData
 }
@@ -48,10 +49,15 @@ export type BrandIcon = {
   viewBox?: string
 }
 
+export type LocalizedString = {
+  fr: string
+  en: string
+}
+
 export type StackItem = {
   id: string
   title: string
-  description: string
+  description: LocalizedString
   url: string
   icon: BrandIcon | StaticImageData
   tags: string[]

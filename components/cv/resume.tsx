@@ -2,7 +2,8 @@ import Image from "next/image"
 import Profile from "@/public/profile.jpg"
 import { Experience, Venture } from "@/types"
 
-import { awards, education, experiences, languages, profile, skills, ventures } from "@/config/cv"
+import { Locale } from "@/i18n/config"
+import type { Dictionary } from "@/i18n/dictionaries/fr"
 import { formatDuration, formatPeriod } from "@/lib/dates"
 import { cn } from "@/lib/utils"
 
@@ -15,13 +16,22 @@ const Section = ({ title, children, className }: { title: string; children: Reac
   </section>
 )
 
-const Period = ({ start, end, location }: Pick<Experience, "start" | "end" | "location">) => {
-  const duration = end && formatDuration(start, end)
+const Period = ({
+  start,
+  end,
+  location,
+  lang,
+  dates,
+}: Pick<Experience, "start" | "end" | "location"> & {
+  lang: Locale
+  dates: Dictionary["ui"]["dates"]
+}) => {
+  const duration = end && formatDuration(start, end, lang, dates)
 
   return (
     <span className="flex-none text-xs text-neutral-500 tabular-nums">
       {location && <span className="text-neutral-400">{location} · </span>}
-      {formatPeriod(start, end)}
+      {formatPeriod(start, end, lang, dates)}
       {duration && <span className="text-neutral-400"> · {duration}</span>}
     </span>
   )
@@ -38,29 +48,49 @@ const Highlights = ({ items }: { items?: string[] }) =>
     </ul>
   ) : null
 
-const StackLine = ({ items }: { items?: string[] }) =>
+const StackLine = ({ items, label }: { items?: string[]; label: string }) =>
   items?.length ? (
     <p className="mt-1.5 text-xs text-neutral-500 break-before-avoid">
-      <span className="font-medium text-neutral-600">Stack</span> · {items.join(", ")}
+      <span className="font-medium text-neutral-600">{label}</span> · {items.join(", ")}
     </p>
   ) : null
 
-const ExperienceItem = ({ item }: { item: Experience }) => (
+const ExperienceItem = ({
+  item,
+  lang,
+  dates,
+  stackLabel,
+}: {
+  item: Experience
+  lang: Locale
+  dates: Dictionary["ui"]["dates"]
+  stackLabel: string
+}) => (
   <article>
     <header className="flex items-baseline justify-between gap-4 break-after-avoid">
       <h3 className="text-sm font-semibold text-neutral-900">
         {item.company}
         <span className="font-normal text-neutral-600"> · {item.role}</span>
       </h3>
-      <Period start={item.start} end={item.end} location={item.location} />
+      <Period start={item.start} end={item.end} location={item.location} lang={lang} dates={dates} />
     </header>
     {item.description && <p className="mt-1 text-pretty break-after-avoid">{item.description}</p>}
     <Highlights items={item.highlights} />
-    <StackLine items={item.stack} />
+    <StackLine items={item.stack} label={stackLabel} />
   </article>
 )
 
-const VentureItem = ({ item }: { item: Venture }) => (
+const VentureItem = ({
+  item,
+  lang,
+  dates,
+  stackLabel,
+}: {
+  item: Venture
+  lang: Locale
+  dates: Dictionary["ui"]["dates"]
+  stackLabel: string
+}) => (
   <article>
     <header className="flex items-baseline justify-between gap-4 break-after-avoid">
       <h3 className="text-sm font-semibold text-neutral-900">
@@ -73,16 +103,26 @@ const VentureItem = ({ item }: { item: Venture }) => (
         )}
         <span className="font-normal text-neutral-600"> · {item.role}</span>
       </h3>
-      <Period start={item.start} end={item.end} />
+      <Period start={item.start} end={item.end} lang={lang} dates={dates} />
     </header>
     {item.description && <p className="mt-1 text-pretty break-after-avoid">{item.description}</p>}
     <Highlights items={item.highlights} />
-    <StackLine items={item.stack} />
+    <StackLine items={item.stack} label={stackLabel} />
   </article>
 )
 
-export const Resume = ({ className }: { className?: string }) => {
+export const Resume = ({
+  lang,
+  dictionary,
+  className,
+}: {
+  lang: Locale
+  dictionary: Dictionary
+  className?: string
+}) => {
+  const { profile, ventures, experiences, skills, education, languages, awards, ui } = dictionary
   const contacts = [profile.website, profile.linkedin, profile.phone]
+  const sections = ui.sections
 
   return (
     <article
@@ -122,37 +162,37 @@ export const Resume = ({ className }: { className?: string }) => {
       </header>
 
       <div className="mt-6 space-y-6">
-        <Section title="Profil">
+        <Section title={sections.profile}>
           <p className="text-pretty">{profile.summary}</p>
           <p className="mt-1.5 text-pretty text-neutral-600">{profile.availabilityDetails}</p>
         </Section>
 
-        <Section title="Expérience">
+        <Section title={sections.experience}>
           <div className="space-y-4">
             {experiences
               .filter((item) => !item.end)
               .map((item) => (
-                <ExperienceItem key={item.company} item={item} />
+                <ExperienceItem key={item.company} item={item} lang={lang} dates={ui.dates} stackLabel={ui.stackLabel} />
               ))}
             {ventures
               .filter((item) => !item.end)
               .map((item) => (
-                <VentureItem key={item.company} item={item} />
+                <VentureItem key={item.company} item={item} lang={lang} dates={ui.dates} stackLabel={ui.stackLabel} />
               ))}
             {ventures
               .filter((item) => item.end)
               .map((item) => (
-                <VentureItem key={item.company} item={item} />
+                <VentureItem key={item.company} item={item} lang={lang} dates={ui.dates} stackLabel={ui.stackLabel} />
               ))}
             {experiences
               .filter((item) => item.end)
               .map((item) => (
-                <ExperienceItem key={item.company} item={item} />
+                <ExperienceItem key={item.company} item={item} lang={lang} dates={ui.dates} stackLabel={ui.stackLabel} />
               ))}
           </div>
         </Section>
 
-        <Section title="Compétences" className="break-inside-avoid">
+        <Section title={sections.skills} className="break-inside-avoid">
           <dl className="space-y-0.5">
             {skills.map((group) => (
               <div key={group.label} className="flex gap-3">
@@ -164,7 +204,7 @@ export const Resume = ({ className }: { className?: string }) => {
         </Section>
 
         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-[1.5fr_1fr_1fr] break-inside-avoid">
-          <Section title="Formation">
+          <Section title={sections.education}>
             <ul className="space-y-1.5">
               {education.map((item) => (
                 <li key={item.school}>
@@ -179,7 +219,7 @@ export const Resume = ({ className }: { className?: string }) => {
               ))}
             </ul>
           </Section>
-          <Section title="Langues">
+          <Section title={sections.languages}>
             <ul className="space-y-1.5">
               {languages.map((item) => (
                 <li key={item.label}>
@@ -189,7 +229,7 @@ export const Resume = ({ className }: { className?: string }) => {
               ))}
             </ul>
           </Section>
-          <Section title="Distinctions">
+          <Section title={sections.awards}>
             <ul className="space-y-1.5">
               {awards.map((item) => (
                 <li key={item.label}>

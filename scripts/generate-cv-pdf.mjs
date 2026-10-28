@@ -9,11 +9,19 @@ import puppeteer from "puppeteer-core"
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..")
 const port = Number(process.env.CV_PORT ?? 3999)
 const origin = process.env.CV_ORIGIN ?? `http://127.0.0.1:${port}`
-const cvFileName = readFileSync(path.join(root, "config", "cv.ts"), "utf8").match(
-  /export const cvFileName = "([^"]+)"/
-)?.[1]
-if (!cvFileName) throw new Error("Could not read cvFileName from config/cv.ts")
-const output = path.join(root, "public", cvFileName)
+
+const configSource = readFileSync(path.join(root, "i18n", "config.ts"), "utf8")
+const readCvFileName = (locale) =>
+  configSource.match(new RegExp(`${locale}: "([^"]+\\.pdf)"`))?.[1]
+
+const jobs = [
+  { pathname: "/cv", fileName: readCvFileName("fr") },
+  { pathname: "/en/cv", fileName: readCvFileName("en") },
+]
+
+for (const job of jobs) {
+  if (!job.fileName) throw new Error(`Could not read cvFileNames.${job.pathname} from i18n/config.ts`)
+}
 
 const LOCAL_CHROME_PATHS = {
   win32: "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
@@ -86,13 +94,11 @@ const stopServer = async (child) => {
   })
 }
 
-const generate = async () => {
-  const browser = await launchBrowser()
-
+const generatePdf = async (browser, pathname, fileName) => {
+  const page = await browser.newPage()
+  page.setDefaultNavigationTimeout(60_000)
   try {
-    const page = await browser.newPage()
-    page.setDefaultNavigationTimeout(60_000)
-    await page.goto(new URL("/cv", origin).toString(), { waitUntil: "load" })
+    await page.goto(new URL(pathname, origin).toString(), { waitUntil: "load" })
     await page.emulateMediaType("print")
     await page.evaluate(async () => {
       await document.fonts.ready
@@ -111,9 +117,22 @@ const generate = async () => {
     const pdf = await page.pdf({ format: "A4", printBackground: true, preferCSSPageSize: true })
     if (pdf.length < 1_000) throw new Error(`Generated CV is unexpectedly small (${pdf.length} bytes)`)
 
+    const output = path.join(root, "public", fileName)
     await mkdir(path.dirname(output), { recursive: true })
     await writeFile(output, pdf)
     console.log(`Wrote ${output} (${pdf.length} bytes)`)
+  } finally {
+    await page.close()
+  }
+}
+
+const generate = async () => {
+  const browser = await launchBrowser()
+
+  try {
+    for (const job of jobs) {
+      await generatePdf(browser, job.pathname, job.fileName)
+    }
   } finally {
     await browser.close()
   }
@@ -133,7 +152,12 @@ const main = async () => {
   }
 
   try {
-    await waitFor(new URL("/cv", origin).toString())
+    if (server) {
+      await new Promise((resolve) => setTimeout(resolve, 3_000))
+    }
+    for (const job of jobs) {
+      await waitFor(new URL(job.pathname, origin).toString())
+    }
     await generate()
   } finally {
     finished = true

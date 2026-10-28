@@ -18,6 +18,8 @@ import { IconDefinition } from "@fortawesome/fontawesome-svg-core"
 import { faAws, faOpenai } from "@fortawesome/free-brands-svg-icons"
 import { siAnthropic, siClickhouse, siModelcontextprotocol, siNodedotjs, siPostgresql, siPosthog } from "simple-icons"
 
+import { Locale } from "@/i18n/config"
+
 const fromFontAwesome = ({ icon: [width, height, , , path] }: IconDefinition, hex: string): BrandIcon => ({
   path: Array.isArray(path) ? path.join(" ") : path,
   viewBox: `0 0 ${width} ${height}`,
@@ -26,20 +28,23 @@ const fromFontAwesome = ({ icon: [width, height, , , path] }: IconDefinition, he
 
 const brand = ({ path, hex }: { path: string; hex: string }): BrandIcon => ({ path, hex })
 
-export const tags = [
-  { label: "Front", value: "front" },
-  { label: "Back", value: "back" },
-  { label: "Data", value: "data" },
-  { label: "IA", value: "ia" },
-  { label: "Infra", value: "infra" },
-  { label: "Outils", value: "tools" },
-]
+export const tagDefs = [
+  { value: "front", label: { fr: "Front", en: "Front" } },
+  { value: "back", label: { fr: "Back", en: "Back" } },
+  { value: "data", label: { fr: "Data", en: "Data" } },
+  { value: "ia", label: { fr: "IA", en: "AI" } },
+  { value: "infra", label: { fr: "Infra", en: "Infra" } },
+  { value: "tools", label: { fr: "Outils", en: "Tools" } },
+] as const
+
+export const getStackTags = (lang: Locale) =>
+  tagDefs.map((tag) => ({ value: tag.value, label: tag.label[lang] }))
 
 export const stack: StackItem[] = [
   {
     id: "nextjs",
     title: "Next.js",
-    description: "Framework React fullstack",
+    description: { fr: "Framework React fullstack", en: "Full-stack React framework" },
     url: "https://nextjs.org/",
     icon: Nextjs,
     tags: ["front"],
@@ -47,7 +52,7 @@ export const stack: StackItem[] = [
   {
     id: "tanstack-start",
     title: "TanStack Start",
-    description: "Framework React fullstack et type-safe",
+    description: { fr: "Framework React fullstack et type-safe", en: "Type-safe full-stack React framework" },
     url: "https://tanstack.com/start",
     icon: TanstackStart,
     tags: ["front"],
@@ -55,7 +60,7 @@ export const stack: StackItem[] = [
   {
     id: "react",
     title: "React",
-    description: "Bibliothèque JavaScript pour les interfaces",
+    description: { fr: "Bibliothèque JavaScript pour les interfaces", en: "JavaScript library for user interfaces" },
     url: "https://react.dev/",
     icon: ReactLogo,
     tags: ["front"],
@@ -63,7 +68,7 @@ export const stack: StackItem[] = [
   {
     id: "tailwindcss",
     title: "Tailwind CSS",
-    description: "Framework CSS utilitaire",
+    description: { fr: "Framework CSS utilitaire", en: "Utility-first CSS framework" },
     url: "https://tailwindcss.com/",
     icon: Tailwindcss,
     tags: ["front"],
@@ -71,7 +76,10 @@ export const stack: StackItem[] = [
   {
     id: "shadcn",
     title: "shadcn/ui",
-    description: "Pour construire sa propre bibliothèque de composants",
+    description: {
+      fr: "Pour construire sa propre bibliothèque de composants",
+      en: "Build your own component library",
+    },
     url: "https://ui.shadcn.com/",
     icon: Shadcn,
     tags: ["front"],
@@ -79,7 +87,7 @@ export const stack: StackItem[] = [
   {
     id: "nodejs",
     title: "Node.js",
-    description: "Environnement d’exécution JavaScript côté serveur",
+    description: { fr: "Environnement d’exécution JavaScript côté serveur", en: "Server-side JavaScript runtime" },
     url: "https://nodejs.org/",
     icon: brand(siNodedotjs),
     tags: ["back"],
@@ -87,7 +95,7 @@ export const stack: StackItem[] = [
   {
     id: "postgresql",
     title: "PostgreSQL",
-    description: "Base de données relationnelle",
+    description: { fr: "Base de données relationnelle", en: "Relational database" },
     url: "https://www.postgresql.org/",
     icon: brand(siPostgresql),
     tags: ["back", "data"],
@@ -95,7 +103,7 @@ export const stack: StackItem[] = [
   {
     id: "supabase",
     title: "Supabase",
-    description: "Alternative open source à Firebase",
+    description: { fr: "Alternative open source à Firebase", en: "Open-source Firebase alternative" },
     url: "https://supabase.com/",
     icon: Supabase,
     tags: ["back", "data"],
@@ -103,7 +111,7 @@ export const stack: StackItem[] = [
   {
     id: "stripe",
     title: "Stripe",
-    description: "Plateforme de paiement",
+    description: { fr: "Plateforme de paiement", en: "Payments platform" },
     url: "https://stripe.com/",
     icon: Stripe,
     tags: ["back"],
@@ -111,7 +119,7 @@ export const stack: StackItem[] = [
   {
     id: "clickhouse",
     title: "ClickHouse",
-    description: "Base de données analytique orientée colonnes",
+    description: { fr: "Base de données analytique orientée colonnes", en: "Column-oriented analytics database" },
     url: "https://clickhouse.com/",
     icon: brand(siClickhouse),
     tags: ["data"],
@@ -119,7 +127,7 @@ export const stack: StackItem[] = [
   {
     id: "elasticsearch",
     title: "Elasticsearch",
-    description: "Moteur de recherche et d’analyse",
+    description: { fr: "Moteur de recherche et d’analyse", en: "Search and analytics engine" },
     url: "https://www.elastic.co/elasticsearch",
     icon: Elasticsearch,
     tags: ["data"],
@@ -127,7 +135,7 @@ export const stack: StackItem[] = [
   {
     id: "openai",
     title: "OpenAI",
-    description: "Modèles de langage et embeddings",
+    description: { fr: "Modèles de langage et embeddings", en: "Language models and embeddings" },
     url: "https://platform.openai.com/",
     icon: fromFontAwesome(faOpenai, "412991"),
     tags: ["ia"],
@@ -135,7 +143,7 @@ export const stack: StackItem[] = [
   {
     id: "claude",
     title: "Claude",
-    description: "Modèles de langage d’Anthropic",
+    description: { fr: "Modèles de langage d’Anthropic", en: "Anthropic language models" },
     url: "https://www.anthropic.com/claude",
     icon: brand({ ...siAnthropic, hex: "D97757" }),
     tags: ["ia"],
@@ -143,7 +151,10 @@ export const stack: StackItem[] = [
   {
     id: "mcp",
     title: "Model Context Protocol",
-    description: "Protocole pour connecter les LLM aux outils et aux données",
+    description: {
+      fr: "Protocole pour connecter les LLM aux outils et aux données",
+      en: "Protocol to connect LLMs to tools and data",
+    },
     url: "https://modelcontextprotocol.io/",
     icon: brand({ ...siModelcontextprotocol, hex: "FFFFFF" }),
     tags: ["ia"],
@@ -151,7 +162,7 @@ export const stack: StackItem[] = [
   {
     id: "grok-bot",
     title: "Grok Bot",
-    description: "Agents IA pour automatiser ses workflows",
+    description: { fr: "Agents IA pour automatiser ses workflows", en: "AI agents to automate workflows" },
     url: "https://x.ai/bot",
     icon: GrokBot,
     tags: ["ia", "tools"],
@@ -159,7 +170,7 @@ export const stack: StackItem[] = [
   {
     id: "trigger",
     title: "Trigger.dev",
-    description: "Jobs de fond et workflows durables",
+    description: { fr: "Jobs de fond et workflows durables", en: "Background jobs and durable workflows" },
     url: "https://trigger.dev/",
     icon: Trigger,
     tags: ["ia", "infra"],
@@ -167,7 +178,7 @@ export const stack: StackItem[] = [
   {
     id: "vercel",
     title: "Vercel",
-    description: "Plateforme d’hébergement et de déploiement",
+    description: { fr: "Plateforme d’hébergement et de déploiement", en: "Hosting and deployment platform" },
     url: "https://vercel.com/",
     icon: Vercel,
     tags: ["infra"],
@@ -175,7 +186,7 @@ export const stack: StackItem[] = [
   {
     id: "aws",
     title: "AWS",
-    description: "Services cloud d’Amazon",
+    description: { fr: "Services cloud d’Amazon", en: "Amazon cloud services" },
     url: "https://aws.amazon.com/",
     icon: fromFontAwesome(faAws, "FF9900"),
     tags: ["infra"],
@@ -183,7 +194,7 @@ export const stack: StackItem[] = [
   {
     id: "turborepo",
     title: "Turborepo",
-    description: "Système de build performant pour monorepos",
+    description: { fr: "Système de build performant pour monorepos", en: "High-performance build system for monorepos" },
     url: "https://turborepo.com/",
     icon: Turborepo,
     tags: ["infra"],
@@ -191,7 +202,7 @@ export const stack: StackItem[] = [
   {
     id: "posthog",
     title: "PostHog",
-    description: "Analytics produit et session replay",
+    description: { fr: "Analytics produit et session replay", en: "Product analytics and session replay" },
     url: "https://posthog.com/",
     icon: brand({ ...siPosthog, hex: "F54E00" }),
     tags: ["tools"],
@@ -199,7 +210,7 @@ export const stack: StackItem[] = [
   {
     id: "cursor",
     title: "Cursor",
-    description: "Éditeur de code avec IA",
+    description: { fr: "Éditeur de code avec IA", en: "AI-powered code editor" },
     url: "https://cursor.com/",
     icon: Cursor,
     tags: ["tools"],
@@ -207,7 +218,7 @@ export const stack: StackItem[] = [
   {
     id: "figma",
     title: "Figma",
-    description: "Outil de design collaboratif",
+    description: { fr: "Outil de design collaboratif", en: "Collaborative design tool" },
     url: "https://figma.com/",
     icon: Figma,
     tags: ["tools"],
@@ -215,9 +226,15 @@ export const stack: StackItem[] = [
   {
     id: "linear",
     title: "Linear",
-    description: "Outil de planification et de suivi produit",
+    description: { fr: "Outil de planification et de suivi produit", en: "Product planning and issue tracking" },
     url: "https://linear.app/",
     icon: Linear,
     tags: ["tools"],
   },
 ]
+
+export const getLocalizedStack = (lang: Locale) =>
+  stack.map(({ description, ...item }) => ({
+    ...item,
+    description: description[lang],
+  }))

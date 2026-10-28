@@ -3,7 +3,7 @@
 import { useSyncExternalStore } from "react"
 import dynamic from "next/dynamic"
 
-import { profile } from "@/config/cv"
+import { intlLocales, Locale } from "@/i18n/config"
 import { cn } from "@/lib/utils"
 import { Card, CardContent, CardHeader, CardProps, CardTitle } from "@/components/ui/card"
 import { Icons } from "@/components/icons"
@@ -14,39 +14,37 @@ const COORDINATES = [43.116669, 5.93333]
 
 const TIME_ZONE = "Europe/Paris"
 
-const timeFormatter = new Intl.DateTimeFormat("fr-FR", {
-  timeZone: TIME_ZONE,
-  hour: "2-digit",
-  minute: "2-digit",
-  second: "2-digit",
-})
-
-const offsetFormatter = new Intl.DateTimeFormat("fr-FR", { timeZone: TIME_ZONE, timeZoneName: "shortOffset" })
-
-const getLocalTime = () => {
+const getLocalTime = (lang: Locale) => {
+  const timeFormatter = new Intl.DateTimeFormat(intlLocales[lang], {
+    timeZone: TIME_ZONE,
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  })
+  const offsetFormatter = new Intl.DateTimeFormat(intlLocales[lang], { timeZone: TIME_ZONE, timeZoneName: "shortOffset" })
   const now = new Date()
   const offset = offsetFormatter.formatToParts(now).find((part) => part.type === "timeZoneName")?.value
   return `${timeFormatter.format(now)} (${offset})`
 }
 
-let localTime: string | null = null
-
 const subscribeToClock = (onChange: () => void) => {
-  const tick = () => {
-    localTime = getLocalTime()
-    onChange()
-  }
+  const tick = () => onChange()
   tick()
   const intervalId = setInterval(tick, 1000)
-
-  // Clear the interval when the component unmounts
   return () => clearInterval(intervalId)
 }
 
-export const Location = ({ className, ...props }: CardProps) => {
+export const Location = ({
+  lang,
+  location,
+  workMode,
+  title,
+  className,
+  ...props
+}: CardProps & { lang: Locale; location: string; workMode: string; title: string }) => {
   const time = useSyncExternalStore(
     subscribeToClock,
-    () => localTime,
+    () => getLocalTime(lang),
     () => null
   )
 
@@ -55,7 +53,7 @@ export const Location = ({ className, ...props }: CardProps) => {
       <CardHeader className="p-3.5 absolute z-30">
         <CardTitle>
           <Icons.location className="h-3.5 mr-2" />
-          Localisation
+          {title}
         </CardTitle>
       </CardHeader>
       <CardContent className="absolute size-full">
@@ -64,8 +62,8 @@ export const Location = ({ className, ...props }: CardProps) => {
         </div>
         <div className="absolute bottom-0 left-0 w-full z-20 pointer-events-none">
           <div className="flex flex-col p-3.5 text-xs opacity-90">
-            <div className="font-semibold">{profile.location}</div>
-            <div className="text-muted-foreground">Remote ou hybride</div>
+            <div className="font-semibold">{location}</div>
+            <div className="text-muted-foreground">{workMode}</div>
             <div className="font-mono tabular-nums text-muted-foreground">{time ?? "\u00a0"}</div>
           </div>
         </div>

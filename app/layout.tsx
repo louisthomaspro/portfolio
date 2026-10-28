@@ -5,37 +5,14 @@ import { Analytics } from "@vercel/analytics/next"
 import "@fortawesome/fontawesome-svg-core/styles.css"
 import "./globals.css"
 
-import { profile } from "@/config/cv"
+import { siteUrl } from "@/i18n/config"
+import { getRequestLocale } from "@/i18n/request-locale"
 import { cn } from "@/lib/utils"
 
 const inter = Inter({ subsets: ["latin"] })
 
-const title = `${profile.name} · ${profile.headline}`
-
 export const metadata: Metadata = {
-  metadataBase: new URL(profile.website.url),
-  title: {
-    default: title,
-    template: `%s · ${profile.name}`,
-  },
-  description: profile.pitch,
-  authors: [{ name: profile.name, url: profile.website.url }],
-  alternates: {
-    canonical: "/",
-  },
-  openGraph: {
-    title,
-    description: profile.pitch,
-    locale: "fr_FR",
-    type: "website",
-    url: profile.website.url,
-    siteName: profile.name,
-  },
-  twitter: {
-    card: "summary_large_image",
-    title,
-    description: profile.pitch,
-  },
+  metadataBase: new URL(siteUrl),
 }
 
 export const viewport: Viewport = {
@@ -43,9 +20,11 @@ export const viewport: Viewport = {
   colorScheme: "dark",
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const lang = await getRequestLocale()
+
   return (
-    <html lang="fr" className="dark">
+    <html lang={lang} className="dark">
       <body className={cn(inter.className, "antialiased")} suppressHydrationWarning>
         {children}
         <Analytics />

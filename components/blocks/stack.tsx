@@ -3,19 +3,34 @@
 import { useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 
-import { stack, tags } from "@/config/stack"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardProps, CardTitle } from "@/components/ui/card"
 import { Icons } from "@/components/icons"
 import { Pill } from "@/components/pill"
-import { StackCard } from "@/components/stack-card"
+import { StackCard, StackCardItem } from "@/components/stack-card"
 
 const PAGINATION_SIZE = 6
 
 const transition = { type: "spring" as const, stiffness: 500, damping: 45, mass: 1 }
 
-export const Stack = ({ className, ...props }: CardProps) => {
+export type StackListItem = StackCardItem & { tags: string[] }
+
+export const Stack = ({
+  stackItems,
+  tags,
+  title,
+  loadMoreLabel,
+  filterLabel,
+  className,
+  ...props
+}: CardProps & {
+  stackItems: StackListItem[]
+  tags: { value: string; label: string }[]
+  title: string
+  loadMoreLabel: string
+  filterLabel: string
+}) => {
   const [activeTag, setActiveTag] = useState<null | string>(null)
   const [visibleStacks, setVisibleStacks] = useState(PAGINATION_SIZE)
 
@@ -25,26 +40,24 @@ export const Stack = ({ className, ...props }: CardProps) => {
 
   const handleTagClick = (tagValue: string) => {
     if (activeTag === tagValue) {
-      // If the same tag is clicked again, deactivate it
       setActiveTag(null)
     } else {
-      // Otherwise, set the clicked tag as active
       setActiveTag(tagValue)
     }
   }
 
-  const filteredStack = activeTag ? stack.filter((item) => item.tags.includes(activeTag)) : stack
+  const filteredStack = activeTag ? stackItems.filter((item) => item.tags.includes(activeTag)) : stackItems
 
   return (
     <Card className={cn("p-0 flex flex-col", className)} {...props}>
       <CardHeader className="p-3.5">
         <CardTitle>
           <Icons.stack className="h-3.5 mr-2" />
-          Ma stack
+          {title}
         </CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col grow min-h-0">
-        <div role="group" aria-label="Filtrer la stack" className="flex flex-wrap gap-1.5 mb-2 px-3.5">
+        <div role="group" aria-label={filterLabel} className="flex flex-wrap gap-1.5 mb-2 px-3.5">
           {tags.map((item) => (
             <Pill key={item.value} asChild variant={"active"} active={item.value === activeTag}>
               <button type="button" aria-pressed={item.value === activeTag} onClick={() => handleTagClick(item.value)}>
@@ -73,7 +86,7 @@ export const Stack = ({ className, ...props }: CardProps) => {
         {visibleStacks < filteredStack.length && (
           <div className="flex justify-center my-4 lg:hidden">
             <Button onClick={handleLoadMore} size={"sm"} variant={"secondary"} className="rounded-full max-w-xs w-full">
-              Voir plus
+              {loadMoreLabel}
             </Button>
           </div>
         )}

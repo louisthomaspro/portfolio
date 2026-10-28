@@ -1,8 +1,8 @@
 import { ImageResponse } from "next/og"
 
-import { profile } from "@/config/cv"
+import { getDictionary } from "@/i18n/get-dictionary"
 
-export const alt = `${profile.name} · ${profile.headline}`
+export const alt = "Louis Thomas"
 export const size = {
   width: 1200,
   height: 630,
@@ -26,6 +26,8 @@ const loadInter = async (weight: 400 | 600) => {
 }
 
 export default async function OpenGraphImage() {
+  const dictionary = await getDictionary("fr")
+  const { profile, ui } = dictionary
   const [regular, semibold] = await Promise.all([loadInter(400), loadInter(600)])
 
   return new ImageResponse(
@@ -75,7 +77,7 @@ export default async function OpenGraphImage() {
           letterSpacing: "-0.2px",
         }}
       >
-        {`Ex-CTO de Minea · ${profile.location} · ${profile.website.label}`}
+        {`${ui.ogSubtitle} · ${profile.location} · ${profile.website.label}`}
       </div>
     </div>,
     {

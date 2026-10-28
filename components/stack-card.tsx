@@ -4,7 +4,11 @@ import { StackItem } from "@/types"
 
 import { cn } from "@/lib/utils"
 
-export const StackCard = ({ stackItem, className }: { stackItem: StackItem; className?: string }) => (
+export type StackCardItem = Omit<StackItem, "description" | "tags"> & {
+  description: string
+}
+
+export const StackCard = ({ stackItem, className }: { stackItem: StackCardItem; className?: string }) => (
   <Link
     href={stackItem.url}
     target="_blank"

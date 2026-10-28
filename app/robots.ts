@@ -1,10 +1,10 @@
 import type { MetadataRoute } from "next"
 
-import { profile } from "@/config/cv"
+import { siteUrl } from "@/i18n/config"
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: { userAgent: "*", allow: "/" },
-    sitemap: `${profile.website.url}/sitemap.xml`,
+    sitemap: `${siteUrl}/sitemap.xml`,
   }
 }
