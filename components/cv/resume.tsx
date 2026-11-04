@@ -6,6 +6,7 @@ import { Locale } from "@/i18n/config"
 import type { Dictionary } from "@/i18n/dictionaries/fr"
 import { formatDuration, formatPeriod } from "@/lib/dates"
 import { cn } from "@/lib/utils"
+import { Icons } from "@/components/icons"
 
 const Section = ({ title, children, className }: { title: string; children: React.ReactNode; className?: string }) => (
   <section className={className}>
@@ -121,7 +122,12 @@ export const Resume = ({
   className?: string
 }) => {
   const { profile, ventures, experiences, skills, education, languages, ui } = dictionary
-  const contacts = [profile.website, profile.linkedin, profile.phone]
+  const contactLinks = [
+    { link: profile.website, Icon: Icons.website },
+    { link: profile.email, Icon: Icons.email },
+    { link: profile.linkedin, Icon: Icons.linkedIn },
+    { link: profile.phone, Icon: Icons.phone },
+  ] as const
   const sections = ui.sections
 
   return (
@@ -133,7 +139,7 @@ export const Resume = ({
         className
       )}
     >
-      <header className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+      <header className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div className="flex items-center gap-4">
           <Image
             src={Profile}
@@ -150,11 +156,16 @@ export const Resume = ({
             </p>
           </div>
         </div>
-        <ul className="flex flex-col gap-0.5 text-xs text-neutral-600 sm:items-end">
-          {contacts.map((contact) => (
-            <li key={contact.url}>
-              <a href={contact.url} className="hover:text-neutral-950">
-                {contact.label}
+        <ul className="flex flex-col items-start gap-0.5 text-xs text-neutral-600">
+          {contactLinks.map(({ link, Icon }) => (
+            <li key={link.url}>
+              <a
+                href={link.url}
+                className="inline-flex items-center gap-1.5 hover:text-neutral-950 print:text-neutral-700"
+                {...(link.url.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+              >
+                <Icon className="size-3 shrink-0 text-neutral-400" aria-hidden />
+                {link.label}
               </a>
             </li>
           ))}

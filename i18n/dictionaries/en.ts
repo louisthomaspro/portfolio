@@ -11,6 +11,7 @@ export const dictionary = {
     location: "Toulon, France",
     workMode: "Remote or hybrid",
     website: { label: "louisthomas.pro", url: siteUrl } satisfies Link,
+    email: { label: "louisthomas.pro@gmail.com", url: "mailto:louisthomas.pro@gmail.com" } satisfies Link,
     linkedin: { label: "linkedin.com/in/louis-thomas", url: "https://www.linkedin.com/in/louis-thomas" } satisfies Link,
     phone: { label: "+33 6 51 49 70 56", url: "tel:+33651497056" } satisfies Link,
     pitch:

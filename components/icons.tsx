@@ -5,9 +5,12 @@ import {
   faArrowRight,
   faBriefcase,
   faDownload,
+  faEnvelope,
   faFileLines,
+  faGlobe,
   faLayerGroup,
   faLocationDot,
+  faPhone,
   faRocket,
   faSpinner,
   faUserCircle,
@@ -25,6 +28,9 @@ type IconProps = Partial<FontAwesomeIconProps>
 
 export const Icons = {
   linkedIn: (props: IconProps) => <FontAwesomeIcon {...props} icon={faLinkedin} />,
+  email: (props: IconProps) => <FontAwesomeIcon {...props} icon={faEnvelope} />,
+  phone: (props: IconProps) => <FontAwesomeIcon {...props} icon={faPhone} />,
+  website: (props: IconProps) => <FontAwesomeIcon {...props} icon={faGlobe} />,
   cv: (props: IconProps) => <FontAwesomeIcon {...props} icon={faFileLines} />,
   download: (props: IconProps) => <FontAwesomeIcon {...props} icon={faDownload} />,
   spinner: (props: IconProps) => <FontAwesomeIcon {...props} icon={faSpinner} />,

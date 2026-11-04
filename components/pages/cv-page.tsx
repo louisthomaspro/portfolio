@@ -17,6 +17,7 @@ export const CvPage = async ({ lang }: { lang: Locale }) => {
     name: profile.name,
     jobTitle: profile.headline,
     url: profile.website.url,
+    email: profile.email.label,
     sameAs: [profile.linkedin.url],
     address: { "@type": "PostalAddress", addressLocality: "Toulon", addressCountry: "FR" },
   }
